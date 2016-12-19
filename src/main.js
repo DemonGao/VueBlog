@@ -3,25 +3,30 @@ import VueRouter from 'vue-router'		//路由
 import VueResource from 'vue-resource'	//ajax
 
 import App from './App'
-import Article from './components/Article'
+import Home from './components/Home'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
 /*路由配置*/
-const routers = [
+const routes = [
 	{
 		path : '/',
-		component : Article
+		component : Home
 	},
 	{
-		path : '/article',
-		component : Article
+		path : '/home',
+		component : Home
+	},
+	{
+		path : '/article/:id',
+		name : 'article',
+		component : Home
 	}
 ];
 const router = new VueRouter({
 	mode: 'history',
-  	routers
+  	routes
 });
 
 new Vue({

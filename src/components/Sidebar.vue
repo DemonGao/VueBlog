@@ -1,6 +1,6 @@
 <template>
 	<!-- <div id="sidebar"> -->
-		<div class="panel">
+		<div class="panel sidebar">
 		    <div class="panel-heading">
 		      <img src="../assets/logo.jpg" >
 		      <h3 class="text-center">DemonGao</h3>
@@ -8,7 +8,7 @@
 		    </div>
 		    <div class="panel-body">
 		      <ul>
-		      	<li><router-link to="/article"  :class="{'router-link-active':$route.path =='/'}">文章</router-link></li>
+		      	<li><router-link to="/home" :class="{'router-link-active':$route.path =='/'}">文章</router-link></li>
 		      	<li><router-link to="/type">分类</router-link></li>
 		      	<li><router-link to="/sign">标签</router-link></li>
 		      </ul>
@@ -17,22 +17,22 @@
 	<!-- </div> -->
 </template>
 <style type="text/css">
-	.panel{}
-	.panel .panel-heading{}
-	.panel .panel-heading img{
+	.panel.sidebar{}
+	.panel.sidebar .panel-heading{}
+	.panel.sidebar .panel-heading img{
 		border-radius: 100%;
 		height: 100%;
 		width:100%;
 	}
-	.panel .panel-heading span{
+	.panel.sidebar .panel-heading span{
 		display: block;
 		padding: 0 10px;
 		margin:10px 0; 
 	}
-	.panel .panel-heading h3{
+	.panel.sidebar .panel-heading h3{
 		position: relative;
 	}
-	.panel .panel-heading h3:after{
+	.panel.sidebar .panel-heading h3:after{
 		content: '';
 	    position: absolute;
 	    bottom: -5px;
@@ -45,20 +45,20 @@
 	    -webkit-transform: scaleX(1);
 	    transform: scaleX(1);
 	}
-	.panel .panel-heading h3:hover::after{
+	.panel.sidebar .panel-heading h3:hover::after{
 		-webkit-transform: scaleX(0);
 		transform: scaleX(0)
 	}
-	.panel .panel-body{
+	.panel.sidebar .panel-body{
 		padding-left: 0px;
 		padding-right: 0px;
 	
 	}
-	.panel .panel-body ul{
+	.panel.sidebar .panel-body ul{
 		list-style: none;
 		padding-left: 0;
 	}
-	.panel .panel-body ul li{
+	.panel.sidebar .panel-body ul li{
 		
 	}
 	.panel .panel-body ul li a{
