@@ -37,6 +37,7 @@
       box-sizing: border-box;
       width: 100%;
       height: auto;
+      margin-bottom: 0px;
       background: #fff;
       border-radius: 5px;
       box-shadow: 0 0 0 1px rgba(0,0,0,.02),0 4px 10px rgba(0,0,0,.06);

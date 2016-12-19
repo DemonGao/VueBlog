@@ -1,5 +1,5 @@
 <template>
-	<!-- <div id="sidebar"> -->
+	<div id="sidebar">
 		<div class="panel sidebar">
 		    <div class="panel-heading">
 		      <img src="../assets/logo.jpg" >
@@ -14,9 +14,10 @@
 		      </ul>
 		    </div>
 	  	</div>
-	<!-- </div> -->
+	</div>
 </template>
 <style type="text/css">
+	#sidebar{}
 	.panel.sidebar{}
 	.panel.sidebar .panel-heading{}
 	.panel.sidebar .panel-heading img{
