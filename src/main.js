@@ -4,6 +4,7 @@ import VueResource from 'vue-resource'	//ajax
 
 import App from './App'
 import Home from './components/Home'
+import Type from './components/Type'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 Vue.use(VueRouter)
@@ -17,6 +18,10 @@ const routes = [
 	{
 		path : '/home',
 		component : Home
+	},
+	{
+		path : '/type',
+		component : Type
 	},
 	{
 		path : '/article/:id',

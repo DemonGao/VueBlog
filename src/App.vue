@@ -1,10 +1,10 @@
 <template>
   <div id="wrapper">
     <div class="container">
-      <div class="col-md-2">
+      <div class="col-md-2 col-sm-4">
         <sidebar></sidebar>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-8">
         <router-view></router-view>
       </div>
       <div class="col-md-2">

@@ -3,7 +3,7 @@
 		<div class="panel sidebar">
 		    <div class="panel-heading">
 		      <img src="../assets/logo.jpg" >
-		      <h3 class="text-center">DemonGao</h3>
+		      <h4 class="text-center">DemonGao</h4>
 		      <span class="text-center">全栈工程师</span>
 		    </div>
 		    <div class="panel-body">
@@ -30,10 +30,11 @@
 		padding: 0 10px;
 		margin:10px 0; 
 	}
-	.panel.sidebar .panel-heading h3{
+	.panel.sidebar .panel-heading h4{
 		position: relative;
+		margin-top: 15px;
 	}
-	.panel.sidebar .panel-heading h3:after{
+	.panel.sidebar .panel-heading h4:after{
 		content: '';
 	    position: absolute;
 	    bottom: -5px;
@@ -46,7 +47,7 @@
 	    -webkit-transform: scaleX(1);
 	    transform: scaleX(1);
 	}
-	.panel.sidebar .panel-heading h3:hover::after{
+	.panel.sidebar .panel-heading h4:hover::after{
 		-webkit-transform: scaleX(0);
 		transform: scaleX(0)
 	}
