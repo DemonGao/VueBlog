@@ -1,4 +1,4 @@
-# vue2.0个人博客
+# vue2.0 + vue-router +vue-resource +vuex个人博客
 
 > A Vue.js project
 
