@@ -6,7 +6,9 @@ import App from './App'
 import Home from './components/Home'
 import Type from './components/Type'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+//引入
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 Vue.use(VueRouter)
 Vue.use(VueResource)
 /*路由配置*/
@@ -33,6 +35,22 @@ const router = new VueRouter({
 	mode: 'history',
   	routes
 });
+
+
+// 简单配置
+NProgress.inc(0.2)
+NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
+
+
+router.beforeEach((to,from,next) => {
+  NProgress.start()
+  next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
+
 
 new Vue({
   el: '#app',
