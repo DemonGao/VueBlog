@@ -4,7 +4,7 @@ import VueResource from 'vue-resource'	//ajax
 
 import App from './App'
 import Home from './components/Home'
-import Type from './components/Type'
+import Sign from './components/Sign'
 import 'bootstrap/dist/css/bootstrap.min.css'
 //引入
 import NProgress from 'nprogress'
@@ -22,8 +22,8 @@ const routes = [
 		component : Home
 	},
 	{
-		path : '/type',
-		component : Type
+		path : '/sign',
+		component : Sign
 	},
 	{
 		path : '/article/:id',

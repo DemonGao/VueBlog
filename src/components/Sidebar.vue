@@ -9,7 +9,7 @@
 		    <div class="panel-body">
 		      <ul>
 		      	<li><router-link to="/home" :class="{'router-link-active':$route.path =='/'}">文章</router-link></li>
-		      	<li><router-link to="/type">分类</router-link></li>
+		      	<!-- <li><router-link to="/type">分类</router-link></li> -->
 		      	<li><router-link to="/sign">标签</router-link></li>
 		      </ul>
 		    </div>
