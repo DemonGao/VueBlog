@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'		//路由
-import VueResource from 'vue-resource'	//ajax
+/*ajax*/
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 import App from './App'
 import Home from './components/Home'
@@ -11,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 Vue.use(VueRouter)
-Vue.use(VueResource)
+Vue.use(VueAxios, axios)
 /*路由配置*/
 const routes = [
 	{
