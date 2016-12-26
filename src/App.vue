@@ -5,11 +5,22 @@
         <sidebar></sidebar>
       </div>
       <div class="col-md-8 col-sm-8">
-        <router-view></router-view>
+        <transition
+          v-on:before-enter="beforeEnter"
+          v-on:enter="enter"
+          v-on:after-enter="afterEnter"
+          v-on:enter-cancelled="enterCancelled"
+          v-on:before-leave="beforeLeave"
+          v-on:leave="leave"
+          v-on:after-leave="afterLeave"
+          v-on:leave-cancelled="leaveCancelled"
+        >
+          <router-view></router-view>
+        </transition>  
       </div>
-      <div class="col-md-2">
+      <!-- <div class="col-md-2">
         2
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -20,6 +31,45 @@
     components:{
       //对于自定义标签名，Vue.js 不强制要求遵循 W3C规则 （小写，并且包含一个短杠），尽管遵循这个规则比较好。
       'sidebar':Sidebar
+    },
+    methods:{
+      // 过渡进入
+      // 设置过渡进入之前的组件状态
+      beforeEnter: function (el) {
+        el.style.opacity = 0;
+        el.style.transformOrigin = 'left'
+      },
+      // 设置过渡进入完成时的组件状态
+      enter: function (el, done) {
+        // ...
+        Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
+        Velocity(el, { fontSize: '1em' }, { complete: done })
+      },
+      // 设置过渡进入完成之后的组件状态
+      afterEnter: function (el) {
+        // ...
+      },
+      enterCancelled: function (el) {
+        // ...
+      },
+      // 过渡离开
+      // 设置过渡离开之前的组件状态
+      beforeLeave: function (el) {
+        // ...
+      },
+      // 设置过渡离开完成时地组件状态
+      leave: function (el, done) {
+        // ...
+        done()
+      },
+      // 设置过渡离开完成之后的组件状态
+      afterLeave: function (el) {
+        // ...
+      },
+      // leaveCancelled 只用于 v-show 中
+      leaveCancelled: function (el) {
+        // ...
+        }
     }
   }
 </script>
