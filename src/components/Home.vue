@@ -21,7 +21,7 @@
 							<i class="iconfont icon-biaoqian"></i>
 							<router-link class="icon-tags-title" to="/sign" tag="span">JavaScript</router-link>
 						</div>
-						<router-link class="more" to="/sign" tag="span">查看更多</router-link>
+						<router-link class="more" :to="{name:'article',params:{id:123}}" tag="span">查看更多</router-link>
 					</div>
 				</li>
 				<li class="home-item">

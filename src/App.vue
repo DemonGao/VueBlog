@@ -7,7 +7,7 @@
       <div class="col-md-8 col-sm-8">
         <router-view></router-view>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 md-hiden">
         2
       </div>
     </div>
@@ -41,5 +41,16 @@
       background: #fff;
       border-radius: 5px;
       box-shadow: 0 0 0 1px rgba(0,0,0,.02),0 4px 10px rgba(0,0,0,.06);
+  }
+  
+  @media (min-width: 768px){
+    .md-hiden{
+      display: none;
+    }
+  }
+  @media (min-width: 992px){
+    .md-hiden{
+       display: block;
+    }
   }
 </style>

@@ -5,6 +5,7 @@ import VueResource from 'vue-resource'	//ajax
 import App from './App'
 import Home from './components/Home'
 import Sign from './components/Sign'
+import Article from './components/Article'
 import 'bootstrap/dist/css/bootstrap.min.css'
 //引入
 import NProgress from 'nprogress'
@@ -26,9 +27,9 @@ const routes = [
 		component : Sign
 	},
 	{
-		path : '/article/:id',
+		path : '/article?id=:id',
 		name : 'article',
-		component : Home
+		component : Article
 	}
 ];
 const router = new VueRouter({
