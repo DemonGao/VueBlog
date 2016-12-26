@@ -18,7 +18,11 @@
           <router-view></router-view>
         </transition>  
       </div>
+<<<<<<< HEAD
       <!-- <div class="col-md-2">
+=======
+      <div class="col-md-2 md-hiden">
+>>>>>>> f8a167ad3be839684015e8826284544d27594e4a
         2
       </div> -->
     </div>
@@ -91,5 +95,16 @@
       background: #fff;
       border-radius: 5px;
       box-shadow: 0 0 0 1px rgba(0,0,0,.02),0 4px 10px rgba(0,0,0,.06);
+  }
+  
+  @media (min-width: 768px){
+    .md-hiden{
+      display: none;
+    }
+  }
+  @media (min-width: 992px){
+    .md-hiden{
+       display: block;
+    }
   }
 </style>
