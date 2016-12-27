@@ -8,6 +8,7 @@ import App from './App'
 import Home from './components/Home'
 import Sign from './components/Sign'
 import Article from './components/Article'
+import TimeAxis from './components/TimeAxis'
 import 'bootstrap/dist/css/bootstrap.min.css'
 //引入
 import NProgress from 'nprogress'
@@ -29,9 +30,13 @@ const routes = [
 		component : Sign
 	},
 	{
-		path : '/article?id=:id',
+		path : '/article/:id',
 		name : 'article',
 		component : Article
+	},
+	{
+		path : '/timeaxis',
+		component : TimeAxis
 	}
 ];
 const router = new VueRouter({

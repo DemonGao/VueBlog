@@ -8,9 +8,11 @@
 		    </div>
 		    <div class="panel-body">
 		      <ul>
-		      	<li><router-link to="/home" :class="{'router-link-active':$route.path =='/'}">文章</router-link></li>
-		      	<!-- <li><router-link to="/type">分类</router-link></li> -->
+		      	<li>
+		      		<router-link to="/home" :class="{'router-link-active':$route.path =='/'||$route.path.indexOf('article')!=-1}">文章</router-link>
+		      	</li>
 		      	<li><router-link to="/sign">标签</router-link></li>
+		      	<li><router-link to="/timeaxis">时间轴</router-link></li>
 		      </ul>
 		    </div>
 	  	</nav>
@@ -22,8 +24,9 @@
 	  			<a class="head-right" href="https://github.com/DemonGao">GitHub</a>
 	  		</div>
 	  		<ul class="mobile-nav">
-	  			<router-link to="/home" :class="{'router-link-active':$route.path =='/'}" tag="li">文章</router-link>
+	  			<router-link to="/home" :class="{'router-link-active':$route.path =='/'||$route.path.indexOf('article')!=-1}" tag="li">文章</router-link>
 	  			<router-link to="/sign" tag="li">标签</router-link>
+	  			<router-link to="/timeaxis" tag="li">时间轴</router-link>
 	  			<router-link to="/weather" tag="li">天气预报</router-link>
 	  		</ul>
 	  	</nav>
