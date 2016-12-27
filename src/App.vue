@@ -1,25 +1,27 @@
 <template>
   <div id="wrapper">
     <div class="container">
-      <div class="col-md-2 col-sm-4">
-        <sidebar></sidebar>
-      </div>
-      <div class="content col-md-7 col-sm-8">
-        <transition
-          v-on:before-enter="beforeEnter"
-          v-on:enter="enter"
-          v-on:after-enter="afterEnter"
-          v-on:enter-cancelled="enterCancelled"
-          v-on:before-leave="beforeLeave"
-          v-on:leave="leave"
-          v-on:after-leave="afterLeave"
-          v-on:leave-cancelled="leaveCancelled"
-        >
-          <router-view></router-view>
-        </transition>  
-      </div>
-      <div class="col-md-3 md-hiden">
-        <weather-forecast></weather-forecast>
+      <div class="row">
+        <div class="col-md-2 col-sm-4">
+          <sidebar></sidebar>
+        </div>
+        <div class="content col-md-7 col-sm-8">
+          <transition
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:after-enter="afterEnter"
+            v-on:enter-cancelled="enterCancelled"
+            v-on:before-leave="beforeLeave"
+            v-on:leave="leave"
+            v-on:after-leave="afterLeave"
+            v-on:leave-cancelled="leaveCancelled"
+          >
+            <router-view></router-view>
+          </transition>  
+        </div>
+        <div class="col-md-3 md-hiden">
+          <weather-forecast></weather-forecast>
+        </div>
       </div>
     </div>
   </div>
@@ -39,9 +41,8 @@
       // 设置过渡进入之前的组件状态
       beforeEnter: function (el) {
         el.style.opacity = 0;
-        el.style.transformOrigin = 'left'
         
-        Velocity(el, { translateX: '100%' })
+        Velocity(el, { translateX: '10%' })
       },
       // 设置过渡进入完成时的组件状态
       enter: function (el, done) {
@@ -83,7 +84,7 @@
   #wrapper{
       background-color:#F5F5F5;
       height: 100%;
-      margin-top: 80px;
+      margin-top:100px;
       overflow: hidden;
   }
   #wrapper .container{padding-left: 0;padding-right: 0}
@@ -96,24 +97,6 @@
       border-radius: 5px;
       box-shadow: 0 0 0 1px rgba(0,0,0,.02),0 4px 10px rgba(0,0,0,.06);
   }
-  @media (min-width: 768px){
-    .md-hiden{
-      display: none;
-    }
-  }
-  @media (min-width: 992px){
-    .md-hiden{
-       display: block;
-    }
-  }
- /* @media (min-width: 1366px){
-    .container{
-      width: 100%;
-    }
-  }
-  @media (min-width: 1400px){
-    .container{
-       width: 1400px;
-    }
-  }*/
+  
+ 
 </style>

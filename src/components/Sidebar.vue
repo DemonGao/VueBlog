@@ -1,8 +1,8 @@
 <template>
 	<div id="sidebar">
-		<div class="panel sidebar">
+		<nav class="panel sidebar sm-hiden">
 		    <div class="panel-heading">
-		      <img src="../assets/logo.jpg" >
+		      <img src="./../assets/logo.jpg" >
 		      <h4 class="text-center">DemonGao</h4>
 		      <span class="text-center">全栈工程师</span>
 		    </div>
@@ -13,11 +13,155 @@
 		      	<li><router-link to="/sign">标签</router-link></li>
 		      </ul>
 		    </div>
-	  	</div>
+	  	</nav>
+	  	<!-- 手机端导航-->
+	  	<nav class="mobile sm-show">
+	  		<div class="mobile-head">
+	  			<h3 class="head-title">DemonGaob博客</h3>
+	  			<img class="head-left" src="./../assets/logo.jpg">
+	  			<a class="head-right" href="https://github.com/DemonGao">GitHub</a>
+	  		</div>
+	  		<ul class="mobile-nav">
+	  			<router-link to="/home" :class="{'router-link-active':$route.path =='/'}" tag="li">文章</router-link>
+	  			<router-link to="/sign" tag="li">标签</router-link>
+	  			<router-link to="/weather" tag="li">天气预报</router-link>
+	  		</ul>
+	  	</nav>
+	  	<!-- <nav class="navbar navbar-default navbar-fixed-top sm-show" role="navigation">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" @click="click">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+		      	</button>
+
+		      	<a class="navbar-brand" href="#">
+		        	<img alt="Brand" src="./../assets/logo.jpg" height="100%">
+		      	</a>
+		      	<h3 class="nav-title">DemonGao博客</h3>
+		    </div>
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    	<ul class="nav navbar-nav">
+			        <li class="active">
+			        	<router-link v-on:click="aclick" to="/home" :class="{'router-link-active':$route.path =='/'}">文章</router-link>
+			        </li>
+			        <li><router-link to="/sign">标签</router-link></li>
+			        <li><router-link to="/sign">天气预报</router-link></li>
+			    </ul>
+		    </div>
+		  </div>
+		</nav> -->
 	</div>
+
 </template>
-<style type="text/css">
-	#sidebar{}
+<script type="text/javascript">
+	export default{
+		data(){
+			return {
+				collapse_show:false
+			}
+		},
+		methods:{
+			click:function(){
+				var el = document.getElementById("bs-example-navbar-collapse-1");
+				if(this.collapse_show){
+					
+					Velocity(el, { /*translateY: '-186px',*/opacity:0 }, { duration: 300 })
+				}else{
+
+					Velocity(el, { /*translateY: '0',*/opacity:1 }, { duration: 300 })
+				}
+				
+				this.collapse_show = !this.collapse_show;
+			},
+			aclick:function(){
+				alert(1);
+			}
+		},
+	}
+</script>
+<style type="text/css" scoped>
+	.mobile{
+		position: fixed;
+		top: 0;
+		width: 100%;
+		height: 100px;
+		box-sizing: border-box;
+		overflow: hidden;
+		background-color: #f5f5f5;
+		z-index: 99999;
+	}
+	.mobile .mobile-head{
+		box-sizing: border-box;
+		height: 50px;
+		padding: 5px;
+		border-bottom: 1px solid #fff;
+	}
+	.mobile .mobile-head .head-title{
+		float: left;
+		width: 100%;
+		margin: 0;
+		height: 40px;
+		line-height: 40px;
+		padding-left: 40px;
+		padding-right: 44px; 
+		text-align: center;
+	}
+	.mobile .mobile-head .head-left{
+		border-radius: 5px;
+		width: 40px;
+		height: 100%;
+		margin-left: -100%;
+	}
+	.mobile .mobile-head .head-right{
+		float: left;
+		overflow: hidden;
+		line-height: 40px;
+		height: 40px;
+		margin-left: -50px;
+	}
+	.mobile .mobile-nav{
+		display: -webkit-flex; /* Safari */
+  		display: flex;
+  		list-style: none;
+  		padding-left: 0;
+	}
+	.mobile .mobile-nav li{
+		flex:1;
+		padding:15px 0;
+		text-align: center;
+	}
+	.mobile .mobile-nav li.router-link-active{
+		color: #fff;
+		background-color: rgba(101,248,205,1);
+	}
+	/*#sidebar .navbar{
+		height: 50px;
+	}
+	#sidebar .collapse{
+		display: block;
+		opacity:0;
+		overflow: hidden;
+		transition: .5s all;
+		background-color: #fff;
+		border-bottom:1px solid #ccc;
+	}
+	#sidebar .nav-title{
+		float:left;
+		margin:0;
+		height:50px;
+		width: 100%;
+		padding-left:50px;
+		padding-right: 44px;
+		text-align: center;
+		line-height:50px;
+		margin-top: -50px;
+	}
+	#sidebar .navbar-brand{
+		padding: 0px;
+	}*/
 	.panel.sidebar{}
 	.panel.sidebar .panel-heading{}
 	.panel.sidebar .panel-heading img{
@@ -77,4 +221,8 @@
 
 		background-color: rgba(101,248,205,1);
 	}
+
+
+
+	
 </style>
