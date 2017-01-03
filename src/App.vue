@@ -1,30 +1,34 @@
 <template>
-  <div id="wrapper">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-2 col-sm-4">
-          <sidebar></sidebar>
+    <div id="wrapper" :class="{'margin_t_0':$route.path.indexOf('admin')!=-1}">
+        <div class="container">
+            <div class="row" v-if="$route.path.indexOf('admin')==-1">
+                <div class="col-md-2 col-sm-4">
+                    <sidebar></sidebar>
+                </div>
+                <div class="content col-md-7 col-sm-8">
+                    <transition
+                        v-on:before-enter="beforeEnter"
+                        v-on:enter="enter"
+                        v-on:after-enter="afterEnter"
+                        v-on:enter-cancelled="enterCancelled"
+                        v-on:before-leave="beforeLeave"
+                        v-on:leave="leave"
+                        v-on:after-leave="afterLeave"
+                        v-on:leave-cancelled="leaveCancelled"
+                    >
+                        <router-view></router-view>
+                    </transition>  
+                </div>
+                <div class="col-md-3 md-hiden">
+                    <weather-forecast></weather-forecast>
+                </div>
+            </div>
+
+            <div v-else="$route.path.indexOf('admin')==-1">
+                123
+            </div>
         </div>
-        <div class="content col-md-7 col-sm-8">
-          <transition
-            v-on:before-enter="beforeEnter"
-            v-on:enter="enter"
-            v-on:after-enter="afterEnter"
-            v-on:enter-cancelled="enterCancelled"
-            v-on:before-leave="beforeLeave"
-            v-on:leave="leave"
-            v-on:after-leave="afterLeave"
-            v-on:leave-cancelled="leaveCancelled"
-          >
-            <router-view></router-view>
-          </transition>  
-        </div>
-        <div class="col-md-3 md-hiden">
-          <weather-forecast></weather-forecast>
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 <script type="text/javascript">
   import Sidebar from './components/Sidebar'
@@ -98,5 +102,8 @@
       box-shadow: 0 0 0 1px rgba(0,0,0,.02),0 4px 10px rgba(0,0,0,.06);
   }
   
+  .margin_t_0{
+    margin-top:0 !important;
+  }
  
 </style>

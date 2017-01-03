@@ -59,7 +59,7 @@
 			    _self.updatetime = weather.realtime.time;
 			    _self.temperature = weather.realtime.weather.temperature;
 			    _self.info = weather.realtime.weather.info;
-			    _self.img ='../../static/img/weatherIcon/'+ weather.realtime.weather.img +'.png';
+			    _self.img ='./static/img/weatherIcon/'+ weather.realtime.weather.img +'.png';
 			    _self.wind.direct = weather.realtime.wind.direct;
 			    _self.wind.power = weather.realtime.wind.power;
 			    _self.hightweather = weather.weather[0].info.day[2];

@@ -1,9 +1,10 @@
 <template>
 	<div id="sidebar">
+		<!-- 用户PC端导航-->
 		<nav class="panel sidebar sm-hiden">
 		    <div class="panel-heading">
 		      <img src="./../assets/logo.jpg" >
-		      <h4 class="text-center">DemonGao</h4>
+		      <router-link to="/admin" tag="h4" class="text-center">DemonGao</router-link>
 		      <span class="text-center">全栈工程师</span>
 		    </div>
 		    <div class="panel-body">
@@ -16,7 +17,7 @@
 		      </ul>
 		    </div>
 	  	</nav>
-	  	<!-- 手机端导航-->
+	  	<!-- 用户手机端导航-->
 	  	<nav class="mobile sm-show">
 	  		<div class="mobile-head">
 	  			<h3 class="head-title">DemonGaob博客</h3>
@@ -30,32 +31,9 @@
 	  			<router-link to="/weather" tag="li">天气预报</router-link>
 	  		</ul>
 	  	</nav>
-	  	<!-- <nav class="navbar navbar-default navbar-fixed-top sm-show" role="navigation">
-		  <div class="container-fluid">
-		    <div class="navbar-header">
-		    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" @click="click">
-			        <span class="sr-only">Toggle navigation</span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-		      	</button>
 
-		      	<a class="navbar-brand" href="#">
-		        	<img alt="Brand" src="./../assets/logo.jpg" height="100%">
-		      	</a>
-		      	<h3 class="nav-title">DemonGao博客</h3>
-		    </div>
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		    	<ul class="nav navbar-nav">
-			        <li class="active">
-			        	<router-link v-on:click="aclick" to="/home" :class="{'router-link-active':$route.path =='/'}">文章</router-link>
-			        </li>
-			        <li><router-link to="/sign">标签</router-link></li>
-			        <li><router-link to="/sign">天气预报</router-link></li>
-			    </ul>
-		    </div>
-		  </div>
-		</nav> -->
+	  	<!--管理员PC导航-->
+
 	</div>
 
 </template>
