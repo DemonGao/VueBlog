@@ -9,6 +9,9 @@ import Home from './components/Home'
 import Sign from './components/Sign'
 import Article from './components/Article'
 import TimeAxis from './components/TimeAxis'
+
+import Admin from './components/Admin'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 //引入
 import NProgress from 'nprogress'
@@ -37,6 +40,14 @@ const routes = [
 	{
 		path : '/timeaxis',
 		component : TimeAxis
+	},
+
+
+
+	//后台管理端
+	{
+		path : '/admin',
+		component : Admin
 	}
 ];
 const router = new VueRouter({

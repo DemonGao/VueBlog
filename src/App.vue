@@ -1,11 +1,12 @@
 <template>
-    <div id="wrapper" :class="{'margin_t_0':$route.path.indexOf('admin')!=-1}">
-        <div class="container">
+    <div id="wrapper" :class="[islogin?'margin_t_0':'']"><!-- :class="[!islogin?'margin_t_0':'']"-->
+        <div :class="['clearfix',$route.path.indexOf('admin')==-1?'container':'']">
+            <login v-if="islogin"></login>
             <div class="row" v-if="$route.path.indexOf('admin')==-1">
                 <div class="col-md-2 col-sm-4">
                     <sidebar></sidebar>
                 </div>
-                <div class="content col-md-7 col-sm-8">
+                <div  :class="['content','col-sm-8',$route.path.indexOf('admin')==-1?'col-md-7':'col-md-10']">
                     <transition
                         v-on:before-enter="beforeEnter"
                         v-on:enter="enter"
@@ -19,13 +20,9 @@
                         <router-view></router-view>
                     </transition>  
                 </div>
-                <div class="col-md-3 md-hiden">
+                <div class="col-md-3 md-hiden" v-if="$route.path.indexOf('admin')==-1" >
                     <weather-forecast></weather-forecast>
                 </div>
-            </div>
-
-            <div v-else="$route.path.indexOf('admin')==-1">
-                123
             </div>
         </div>
     </div>
@@ -33,12 +30,43 @@
 <script type="text/javascript">
   import Sidebar from './components/Sidebar'
   import WeatherForecast from './components/WeatherForecast'
+  import Login from './components/Login'
   export default{
     //注册组件
     components:{
       //对于自定义标签名，Vue.js 不强制要求遵循 W3C规则 （小写，并且包含一个短杠），尽管遵循这个规则比较好。
       'sidebar':Sidebar,
-      'weatherForecast':WeatherForecast
+      'weatherForecast':WeatherForecast,
+      'login':Login
+    },
+    computed:{
+      islogin:function(){
+          if(this.$route.path.indexOf('admin')==-1){
+            console.log("用户界面");
+            return false;
+          }
+
+          if(localStorage.getItem('demongao_user')!=null){
+            console.log("已登录");
+            return false;
+          }
+            
+          console.log("未登录");
+          return true;
+      }
+    },
+    data(){
+      return {
+        
+      }
+    },
+    mounted:function(){
+      // localStorage.setItem('demongao_user','123');
+      // let demongao_user = localStorage.getItem('demongao_user');
+      // if(localStorage.getItem('demongao_user')!=null){
+      //   this.islogin=true;
+      // }
+      // alert(demongao_user);
     },
     methods:{
       // 过渡进入

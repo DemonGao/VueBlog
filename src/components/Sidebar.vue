@@ -1,7 +1,7 @@
 <template>
 	<div id="sidebar">
 		<!-- 用户PC端导航-->
-		<nav class="panel sidebar sm-hiden">
+		<nav class="panel sidebar sm-hiden" v-if="$route.path.indexOf('admin')==-1">
 		    <div class="panel-heading">
 		      <img src="./../assets/logo.jpg" >
 		      <router-link to="/admin" tag="h4" class="text-center">DemonGao</router-link>
@@ -18,7 +18,7 @@
 		    </div>
 	  	</nav>
 	  	<!-- 用户手机端导航-->
-	  	<nav class="mobile sm-show">
+	  	<nav class="mobile sm-show" v-if="$route.path.indexOf('admin')==-1">
 	  		<div class="mobile-head">
 	  			<h3 class="head-title">DemonGaob博客</h3>
 	  			<img class="head-left" src="./../assets/logo.jpg">
@@ -33,7 +33,22 @@
 	  	</nav>
 
 	  	<!--管理员PC导航-->
-
+		<nav class="panel sidebar" v-if="$route.path.indexOf('admin')!=-1">
+		    <div class="panel-heading">
+		      <img src="./../assets/logo.jpg" >
+		      <router-link to="/admin" tag="h4" class="text-center">DemonGao</router-link>
+		      <span class="text-center">全栈工程师</span>
+		    </div>
+		    <div class="panel-body">
+		      <ul>
+		      	<li>
+		      		<router-link to="/home" :class="{'router-link-active':$route.path =='/'||$route.path.indexOf('article')!=-1}">文章管理</router-link>
+		      	</li>
+		      	<li><router-link to="/sign">标签管理</router-link></li>
+		      	<li><router-link to="/timeaxis">时间轴</router-link></li>
+		      </ul>
+		    </div>
+	  	</nav>
 	</div>
 
 </template>
