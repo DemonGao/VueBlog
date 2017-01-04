@@ -1,8 +1,9 @@
 <template>
     <div id="wrapper" :class="[islogin?'margin_t_0':'']"><!-- :class="[!islogin?'margin_t_0':'']"-->
         <div :class="['clearfix',$route.path.indexOf('admin')==-1?'container':'']">
-            <login v-if="islogin"></login>
-            <div class="row" v-if="$route.path.indexOf('admin')==-1">
+            <login v-if="islogin" :name="123"></login>
+
+            <div class="row" v-if="!islogin">
                 <div class="col-md-2 col-sm-4">
                     <sidebar></sidebar>
                 </div>
@@ -32,6 +33,11 @@
   import WeatherForecast from './components/WeatherForecast'
   import Login from './components/Login'
   export default{
+    filters:{
+      showlogin(){
+        return false
+      }
+    },
     //注册组件
     components:{
       //对于自定义标签名，Vue.js 不强制要求遵循 W3C规则 （小写，并且包含一个短杠），尽管遵循这个规则比较好。
@@ -40,7 +46,7 @@
       'login':Login
     },
     computed:{
-      islogin:function(){
+      islogin(){
           if(this.$route.path.indexOf('admin')==-1){
             console.log("用户界面");
             return false;
@@ -57,10 +63,10 @@
     },
     data(){
       return {
-        
+        abc:true
       }
     },
-    mounted:function(){
+    mounted(){
       // localStorage.setItem('demongao_user','123');
       // let demongao_user = localStorage.getItem('demongao_user');
       // if(localStorage.getItem('demongao_user')!=null){

@@ -15,6 +15,7 @@
 			    </div>
 			</div>
 			<a href="javascript:;" @click="login" class="btn btn-primary btn-sm btn-block" style="width:40%;margin:20px auto 0">登录</a>
+			{{name}}
 		</div>
 	</div>
 </template>
@@ -43,36 +44,44 @@
 	export default{
 		data(){
 			return {
-				serverurl:'localhost:3000',
 				username:'',
 				password:''
 			}
 		},
-		mounted:function(){
+		computed:{
+			serverurl(){
+				return this.$store.state.serverurl
+			}
+		},
+		props:{
+			name
+		},
+		mounted(){
 	      // localStorage.setItem('demongao_user','123');
 	      // let demongao_user = localStorage.getItem('demongao_user');
 	    	if(localStorage.getItem('demongao_user')!=null){
 	        	this.islogin=true;
 	      	}
 	      	let login = document.getElementById('login');
-	      	login.style.top = document.body.clientHeight/2 - login.offsetHeight+'px';
+	      	login.style.top = document.body.clientHeight/2 - login.offsetHeight/2+'px';
 	      	login.style.left = (document.body.clientWidth-login.clientWidth)/2+'px';
 	    },
 	    methods:{
-	    	login:function(){
-	    		console.log("登录");
-	   //  		this.axios.get(this.serverurl+'/api/getArticles',{
-	  	// 			params:{
-	  	// 				// commid:this.id,
-	  	// 				// format:"json",
-	  	// 			}
-	  	// 		}).then((response) => {
-	  	// 			console.log(response.data)
-	  	// 			// MapUtils.createMarker(map,response.data,_self);
-	  	// 			// this.items = response.data.results;//将查询出来的数据赋值给items
-				// })
-				this.axios.get('http://localhost:3000/api/getArticles').then((response) => {
-				  console.log(response.data)
+	    	login(){
+	   	 		this.axios.get(this.serverurl+'api/login',{
+	  				params:{
+	  					username:this.username,
+	  					password:this.password,
+	  				}
+	  			}).then((response) => {
+	  				var data = response.data;
+	  				if (data.status) {
+	  					// this.$router.push({path:"/admin_"});
+	  					this.$router.go(0);
+	  					localStorage.setItem('demongao_user',data.admin);
+	  				}else{
+	  					alert(data.msg);
+	  				}
 				})
 	    	}
 	    }

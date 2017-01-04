@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'		//路由
 /*ajax*/
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+/*管理全局变量*/
+import store from './store'				//vuex
 
 import App from './App'
 import Home from './components/Home'
@@ -74,5 +76,6 @@ router.afterEach(() => {
 new Vue({
   el: '#app',
   router,//路由
+  store,//vuex
   render: h =>h(App)
 })

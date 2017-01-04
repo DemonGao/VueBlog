@@ -1,6 +1,6 @@
 <template>
 	<div class="login">
-		
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
 	</div>
 </template>
 <style type="text/css" scoped>
