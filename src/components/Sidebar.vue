@@ -50,6 +50,7 @@
 		      	</li>
 		      	<li><router-link to="/admin_sign">标签管理</router-link></li>
 		      	<li><router-link to="/admin_timeaxis">时间轴</router-link></li>
+		      	<li><router-link to="/home">博客</router-link></li>
 		      </ul>
 		    </div>
 	  	</nav>
