@@ -1,10 +1,10 @@
 <template>
-	<div id="sidebar">
+	<div id="sidebar" :class="{'height100':$route.path.indexOf('admin')!=-1}">
 		<!-- 用户PC端导航-->
 		<nav class="panel sidebar sm-hiden" v-if="$route.path.indexOf('admin')==-1">
 		    <div class="panel-heading">
 		      <img src="./../assets/logo.jpg" >
-		      <router-link to="/admin" tag="h4" class="text-center">DemonGao</router-link>
+		      <router-link to="/admin_home" tag="h4" class="text-center">DemonGao</router-link>
 		      <span class="text-center">全栈工程师</span>
 		    </div>
 		    <div class="panel-body">
@@ -41,11 +41,15 @@
 		    </div>
 		    <div class="panel-body">
 		      <ul>
+		      	<li><router-link to="/admin_home">首页</router-link><li>
 		      	<li>
-		      		<router-link to="/home" :class="{'router-link-active':$route.path =='/'||$route.path.indexOf('article')!=-1}">文章管理</router-link>
+		      		<router-link to="/admin_articles">文章管理</router-link>
 		      	</li>
-		      	<li><router-link to="/sign">标签管理</router-link></li>
-		      	<li><router-link to="/timeaxis">时间轴</router-link></li>
+		      	<li>
+		      		<router-link to="/admin_addArticle">发布文章</router-link>
+		      	</li>
+		      	<li><router-link to="/admin_sign">标签管理</router-link></li>
+		      	<li><router-link to="/admin_timeaxis">时间轴</router-link></li>
 		      </ul>
 		    </div>
 	  	</nav>
@@ -158,7 +162,10 @@
 	#sidebar .navbar-brand{
 		padding: 0px;
 	}*/
-	.panel.sidebar{}
+	.panel{ margin-bottom:0; }
+	.panel.sidebar{
+		height: 100%;
+	}
 	.panel.sidebar .panel-heading{}
 	.panel.sidebar .panel-heading img{
 		border-radius: 100%;
@@ -220,5 +227,7 @@
 
 
 
-	
+	.height100{
+		height: 100%;
+	}
 </style>

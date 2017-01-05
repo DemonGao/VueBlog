@@ -12,12 +12,14 @@ import Sign from './components/Sign'
 import Article from './components/Article'
 import TimeAxis from './components/TimeAxis'
 
-import Admin from './components/Admin'
+import Admin from './components/Admin/Admin'
+import Admin_AddArticle from './components/Admin/AddArticle'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 //引入
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
 /*路由配置*/
@@ -48,9 +50,14 @@ const routes = [
 
 	//后台管理端
 	{
-		path : '/admin',
+		path : '/admin_home',
 		component : Admin
+	},
+	{
+		path : '/admin_addArticle',
+		component: Admin_AddArticle
 	}
+
 ];
 const router = new VueRouter({
 	mode: 'history',

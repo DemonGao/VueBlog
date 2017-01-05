@@ -51,37 +51,6 @@
 						<router-link class="more" to="/sign" tag="span">查看更多</router-link>
 					</div>
 				</li>
-				<li class="home-item">
-					<h1>JavaScript闭包<span>2016-12-20</span></h1>
-					<div class="home-item-content">
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-					</div>
-					<div class="home-item-footer">
-						<div class="icon-tags">
-							<i class="iconfont icon-biaoqian"></i>
-							<router-link class="icon-tags-title" to="/sign" tag="span">JavaScript</router-link>
-						</div>
-						<router-link class="more" to="/sign" tag="span">查看更多</router-link>
-					</div>
-				</li>
-				<li class="home-item">
-					<h1>JavaScript闭包<span>2016-12-20</span></h1>
-					<div class="home-item-content">
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-					</div>
-					<div class="home-item-footer">
-						<div class="icon-tags">
-							<i class="iconfont icon-biaoqian"></i>
-							<router-link class="icon-tags-title" to="/sign" tag="span">JavaScript</router-link>
-						</div>
-						<router-link class="more" to="/sign" tag="span">查看更多</router-link>
-					</div>
-				</li>
 <!-- 		      	<li><router-link :to="{name:'article',params:{id:123}}"  :class="{'router-link-active':$route.path =='/'}">文章</router-link></li>
 		      	<li><router-link to="/type">分类</router-link></li>
 		      	<li><router-link to="/sign">标签</router-link></li> -->

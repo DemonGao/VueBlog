@@ -21,7 +21,7 @@
 </template>
 <style type="text/css" scoped>
 	.login{
-		position: absolute;
+		position: relative;
 		width: 500px;
 		/*height: 300px;*/
 		border-radius: 5px;

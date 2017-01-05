@@ -1,13 +1,13 @@
 <template>
-    <div id="wrapper" :class="[islogin?'margin_t_0':'']"><!-- :class="[!islogin?'margin_t_0':'']"-->
-        <div :class="['clearfix',$route.path.indexOf('admin')==-1?'container':'']">
+    <div id="wrapper" :class="[$route.path.indexOf('admin')!=-1?'margin_t_0':'']"><!-- :class="[!islogin?'margin_t_0':'']"-->
+        <div :class="['clearfix',$route.path.indexOf('admin')==-1?'container':'content']">
             <login v-if="islogin" :name="123"></login>
 
             <div class="row" v-if="!islogin">
-                <div class="col-md-2 col-sm-4">
+                <div class="row-left col-md-2 col-sm-4">
                     <sidebar></sidebar>
                 </div>
-                <div  :class="['content','col-sm-8',$route.path.indexOf('admin')==-1?'col-md-7':'col-md-10']">
+                <div  :class="['row-center','col-sm-8',$route.path.indexOf('admin')==-1?'col-md-7':'col-md-10']">
                     <transition
                         v-on:before-enter="beforeEnter"
                         v-on:enter="enter"
@@ -21,7 +21,7 @@
                         <router-view></router-view>
                     </transition>  
                 </div>
-                <div class="col-md-3 md-hiden" v-if="$route.path.indexOf('admin')==-1" >
+                <div class="'row-right' col-md-3 md-hiden" v-if="$route.path.indexOf('admin')==-1" >
                     <weather-forecast></weather-forecast>
                 </div>
             </div>
@@ -122,8 +122,7 @@
   #wrapper{
       background-color:#F5F5F5;
       height: 100%;
-      margin-top:100px;
-      overflow: hidden;
+      padding-top:100px;
   }
   #wrapper .container{padding-left: 0;padding-right: 0}
   #wrapper .panel{
@@ -135,9 +134,20 @@
       border-radius: 5px;
       box-shadow: 0 0 0 1px rgba(0,0,0,.02),0 4px 10px rgba(0,0,0,.06);
   }
-  
+  #wrapper .content{
+    height: 100%;
+  }
+  #wrapper .content .row{
+    height: 100%;
+  }
+  #wrapper .content .row-left{
+    height: 100%;
+  }
+  #wrapper .content .row-center{
+    height: 100%;
+  }
   .margin_t_0{
-    margin-top:0 !important;
+    padding-top:0 !important;
   }
  
 </style>

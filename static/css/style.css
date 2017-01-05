@@ -6,7 +6,7 @@
 }
 @media (min-width: 768px){
 	#wrapper{
-      	margin-top: 80px;
+      	padding-top: 80px;
     }
     .sm-hiden{
       	display: block
