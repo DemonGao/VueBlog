@@ -12,12 +12,11 @@ const state = {
 	serverurl:'http://127.0.0.1:3000/',
   map:{},
   article:{
-    add:{
-      modal:{
-        show:false
-      }
-    }
+    title:'',
+    content:'',
+    sign:''
   },
+  addmodal:false,
   	point:{
   		lng:116.404, //纬度
   	  lat:39.915119    //经度

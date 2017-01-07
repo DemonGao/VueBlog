@@ -12,5 +12,8 @@ export default {
   },
   addarticle_toggle_modal({ commit }){
   	commit(types.ADDARTICLE_TOGGLE_MODAL);
+  },
+  update_article({ commit },obj){
+  	commit(types.UPDATE_ARTICLE,obj);
   }
 };

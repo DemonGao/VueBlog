@@ -2,7 +2,7 @@
 	<div id="addArticle" class="editor">
     <!-- <model></model> -->
     <div class="editor-head">
-      <input type="text" placeholder="请输入文章标题" />
+      <input type="text" placeholder="请输入文章标题" @input="updateTitle"/>
       <a href="#" @click="showModel">发表博客</a>
     </div>
 	  <div class="editor-content clearfix">
@@ -22,7 +22,7 @@
     // },
 		data(){
 			return {
-				input : '# hello'
+				input : ''
 			}
 		},
 		computed: {
@@ -33,9 +33,21 @@
 		methods: {
 			update(e) {
 		    	this.input = e.target.value
+          var obj ={
+            key:'content',
+            val:marked(this.input, { sanitize: true })
+          }
+          this.$store.dispatch('update_article',obj)
 		  },
       showModel(){
         this.$store.dispatch('addarticle_toggle_modal')
+      },
+      updateTitle(e){
+          var obj ={
+            key:'title',
+            val:e.target.value
+          }
+          this.$store.dispatch('update_article',obj)
       }
 		}
 	}

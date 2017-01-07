@@ -12,7 +12,13 @@ export default {
   [types.UPDATE_POINT](state,point){
     state.point=point;
   },
+  //打开或关闭添加文章模态框
   [types.ADDARTICLE_TOGGLE_MODAL](state){
-  	state.article.add.modal.show = !state.article.add.modal.show;
+  	state.addmodal = !state.addmodal;
+  },
+  [types.UPDATE_ARTICLE](state,obj){
+
+    state.article[obj.key]= obj.val;
   }
+
 };

@@ -17,7 +17,7 @@
 				<input type="text" v-model="sign">
 			</div>
 			<div class="dialog-footer clearfix">
-				<a class="btn" href="javascript:;">发布</a>
+				<a class="btn"  @click="addArticle">发布</a>
 			</div>
 		</div>
 	</div>
@@ -32,19 +32,38 @@
 		},
 		computed:{
 			showModel(){
-				return this.$store.state.article.add.modal.show;
+				return this.$store.state.addmodal;
+			},
+			article(){
+				return this.$store.state.article
 			}
 		},
 		methods:{
 			close(){
 				this.$store.dispatch('addarticle_toggle_modal')
 			},
-			addSign(e){
+			addSign(event){
 				// console.log(e.target);
-				
-					console.log(e.target.innerHTML);
-					this.sign = e.target.innerHTML;
-	
+				var event = event || window.event;
+				var target = event.target || event.srcElement;
+				if(target.tagName=="LI"){
+					this.sign = target.innerHTML;
+				}
+			},
+			addArticle(){
+				var article = this.article;
+				if(article.title==""){
+					alert("标题不能为空!");
+					return ;
+				}else if(article.content==""){
+					alert("内容不能为空!");
+					return ;
+				}else if(this.sign==""){
+					alert("标签不能为空!");
+					return ;
+				}
+				article.sign = this.sign;
+				alert(JSON.stringify(this.article));
 			}
 		}
 	}
@@ -106,6 +125,7 @@
 	}
 	.dialog-content input{
 		width: 100%;
+		padding-left: 2em;
 		outline: none;
 		border:none;
 		border-bottom:1px solid #000;
