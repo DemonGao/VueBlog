@@ -11,5 +11,8 @@ export default {
   //更新当前坐标
   [types.UPDATE_POINT](state,point){
     state.point=point;
+  },
+  [types.ADDARTICLE_TOGGLE_MODAL](state){
+  	state.article.add.modal.show = !state.article.add.modal.show;
   }
 };

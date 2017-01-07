@@ -26,12 +26,14 @@
                 </div>
             </div>
         </div>
+        <model></model>
     </div>
 </template>
 <script type="text/javascript">
   import Sidebar from './components/Sidebar'
   import WeatherForecast from './components/WeatherForecast'
   import Login from './components/Login'
+  import Model from './components/Util/Model'
   export default{
     filters:{
       showlogin(){
@@ -43,7 +45,8 @@
       //对于自定义标签名，Vue.js 不强制要求遵循 W3C规则 （小写，并且包含一个短杠），尽管遵循这个规则比较好。
       'sidebar':Sidebar,
       'weatherForecast':WeatherForecast,
-      'login':Login
+      'login':Login,
+      'model' : Model
     },
     computed:{
       islogin(){

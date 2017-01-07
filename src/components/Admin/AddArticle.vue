@@ -1,8 +1,9 @@
 <template>
 	<div id="addArticle" class="editor">
+    <!-- <model></model> -->
     <div class="editor-head">
       <input type="text" placeholder="请输入文章标题" />
-      <a href="#">发表博客</a>
+      <a href="#" @click="showModel">发表博客</a>
     </div>
 	  <div class="editor-content clearfix">
       <div class="col-xs-6 write">
@@ -10,16 +11,15 @@
       </div>
       <div class="col-xs-6 view" v-html="compiledMarkdown"></div> 
     </div>
-    <!-- <div class="editor-footer">
-      <div class="">
-        
-      </div>
-    </div> -->
 	</div>
 </template>
 <script type="text/javascript">
   import marked from 'marked'
+  // import Model from './../Util/Model'
 	export default{
+    // components:{
+    //   'model' : Model
+    // },
 		data(){
 			return {
 				input : '# hello'
@@ -31,9 +31,12 @@
     		}
 		},
 		methods: {
-			update: function (e) {
+			update(e) {
 		    	this.input = e.target.value
-		    }
+		  },
+      showModel(){
+        this.$store.dispatch('addarticle_toggle_modal')
+      }
 		}
 	}
 </script>

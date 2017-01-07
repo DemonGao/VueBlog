@@ -10,4 +10,7 @@ export default {
   updatePoint({ commit }, point) {
     commit(types.UPDATE_POINT, point);
   },
+  addarticle_toggle_modal({ commit }){
+  	commit(types.ADDARTICLE_TOGGLE_MODAL);
+  }
 };
