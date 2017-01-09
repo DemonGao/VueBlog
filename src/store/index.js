@@ -14,7 +14,7 @@ const state = {
   article:{
     title:'',
     content:'',
-    sign:''
+    tag:''
   },
   addmodal:false,
   	point:{

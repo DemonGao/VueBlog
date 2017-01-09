@@ -8,13 +8,10 @@
 			</div>
 			<div class="dialog-content">
 				<p>当前拥有的标签有</p>
-				<ul class="clearfix" @click="addSign">
-					<li>JavaScript</li>
-					<li>Css</li>
-					<li>Html</li>
-					<li>Node</li>
+				<ul class="clearfix" @click="addTag">
+					<li v-for="item in tags">{{item.tag}}</li>
 				</ul>
-				<input type="text" v-model="sign">
+				<input type="text" v-model="tag">
 			</div>
 			<div class="dialog-footer clearfix">
 				<a class="btn"  @click="addArticle">发布</a>
@@ -27,7 +24,8 @@
 	export default{
 		data(){
 			return {
-				sign:''
+				tag:'',
+				tags:{}
 			}
 		},
 		computed:{
@@ -36,18 +34,38 @@
 			},
 			article(){
 				return this.$store.state.article
+			},
+			serverurl(){
+				return this.$store.state.serverurl
 			}
 		},
+		mounted(){
+			this.axios.get(this.serverurl+'api/getTags').then((response) => {
+	  			var data = response.data;
+	  			if (data.status) {
+	  				console.log(data);
+	  				this.tags = data.data;
+	  			}else{
+	  				alert(data.msg);
+	  			}
+			})
+	      // localStorage.setItem('demongao_user','123');
+	      // let demongao_user = localStorage.getItem('demongao_user');
+	      // if(localStorage.getItem('demongao_user')!=null){
+	      //   this.islogin=true;
+	      // }
+	      // alert(demongao_user);
+    	},
 		methods:{
 			close(){
 				this.$store.dispatch('addarticle_toggle_modal')
 			},
-			addSign(event){
+			addTag(event){
 				// console.log(e.target);
 				var event = event || window.event;
 				var target = event.target || event.srcElement;
 				if(target.tagName=="LI"){
-					this.sign = target.innerHTML;
+					this.tag = target.innerHTML;
 				}
 			},
 			addArticle(){
@@ -58,12 +76,25 @@
 				}else if(article.content==""){
 					alert("内容不能为空!");
 					return ;
-				}else if(this.sign==""){
+				}else if(this.tag==""){
 					alert("标签不能为空!");
 					return ;
 				}
-				article.sign = this.sign;
-				alert(JSON.stringify(this.article));
+				article.tag = this.tag;
+
+				this.axios.post(this.serverurl+'api/saveArticle',this.article).then((response) => {
+
+	  				var data = response.data;
+	  				console.log(data)
+	  				if (data.status) {
+	  					alert(data.msg);
+	  					this.$router.push({path:"/admin_articles"});
+	  					this.$store.dispatch('addarticle_toggle_modal')
+	  				}else{
+	  					alert(data.msg);
+	  				}
+				})
+
 			}
 		}
 	}
