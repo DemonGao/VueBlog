@@ -43,7 +43,6 @@
 			this.axios.get(this.serverurl+'api/getTags').then((response) => {
 	  			var data = response.data;
 	  			if (data.status) {
-	  				console.log(data);
 	  				this.tags = data.data;
 	  			}else{
 	  				alert(data.msg);

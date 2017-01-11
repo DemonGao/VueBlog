@@ -5,60 +5,45 @@
 		</div> -->
 		<div class="panel-body">
 			<ul class="home-list">
-				<li class="home-item">
-					<h1>JavaScript闭包<span>2016-12-20</span></h1>
-					<div class="home-item-content">
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-					</div>
+				<li v-for="item in articles" class="home-item">
+					<h1>{{item.title}}<span>{{new Date(item.date).Format("YYYY-MM-DD")}}</span></h1>
+					<div class="home-item-content" v-html="item.content"></div>
 					<div class="home-item-footer">
 						<div class="icon-tags">
 							<i class="iconfont icon-biaoqian"></i>
-							<router-link class="icon-tags-title" to="/sign" tag="span">JavaScript</router-link>
+							<router-link class="icon-tags-title" to="/sign" tag="span">{{item.tag}}</router-link>
 						</div>
-						<router-link class="more" :to="{name:'article',params:{id:123}}" tag="span">查看更多</router-link>
+						<router-link class="more" :to="{name:'article',params:{id:item._id}}" tag="span">查看更多</router-link>
 					</div>
 				</li>
-				<li class="home-item">
-					<h1>JavaScript闭包<span>2016-12-20</span></h1>
-					<div class="home-item-content">
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-					</div>
-					<div class="home-item-footer">
-						<div class="icon-tags">
-							<i class="iconfont icon-biaoqian"></i>
-							<router-link class="icon-tags-title" to="/sign" tag="span">JavaScript</router-link>
-						</div>
-						<router-link class="more" to="/sign" tag="span">查看更多</router-link>
-					</div>
-				</li>
-				<li class="home-item">
-					<h1>JavaScript闭包<span>2016-12-20</span></h1>
-					<div class="home-item-content">
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-						写js快一年了,发现基础越来越重要,写点基础的来共勉以及方便之后回看.Stri
-					</div>
-					<div class="home-item-footer">
-						<div class="icon-tags">
-							<i class="iconfont icon-biaoqian"></i>
-							<router-link class="icon-tags-title" to="/sign" tag="span">JavaScript</router-link>
-						</div>
-						<router-link class="more" to="/sign" tag="span">查看更多</router-link>
-					</div>
-				</li>
-<!-- 		      	<li><router-link :to="{name:'article',params:{id:123}}"  :class="{'router-link-active':$route.path =='/'}">文章</router-link></li>
-		      	<li><router-link to="/type">分类</router-link></li>
-		      	<li><router-link to="/sign">标签</router-link></li> -->
 		    </ul>
 		</div>
-		<!-- This is $route.params.id{{ $route.params.id }} -->
 	</div>
 </template>
+<script type="text/javascript">
+	export default{
+		data(){
+			return {
+				articles:[]
+			}
+		},
+		mounted(){
+			this.axios.get(this.$store.state.serverurl+'api/getArticles',{
+					params:{
+		  				tag:this.$route.params.tag,
+	  				}
+				}).then((response) => {
+		  		var data = response.data;
+		  		if (data.status) {
+		 			this.articles = data.data;
+		 			console.log(this.articles);
+		  		}else{
+		  			alert(data.msg);
+		  		}
+			})
+	    },
+	}
+</script>
 <style type="text/css">
 	.home .panel-heading{
 		padding:10px 30px;

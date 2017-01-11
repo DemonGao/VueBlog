@@ -26,10 +26,11 @@ Vue.use(VueAxios, axios)
 const routes = [
 	{
 		path : '/',
-		component : Home
+		redirect: { name: 'home',params:{tag:'all'}},
 	},
 	{
-		path : '/home',
+		path : '/home/:tag',
+		name : 'home',
 		component : Home
 	},
 	{
@@ -64,7 +65,9 @@ const router = new VueRouter({
   	routes
 });
 
-
+// router.redirect({
+//     '/':'/home?all'
+// })
 // 简单配置
 NProgress.inc(0.2)
 NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
