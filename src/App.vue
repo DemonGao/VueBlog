@@ -1,7 +1,7 @@
 <template>
     <div id="wrapper" :class="[$route.path.indexOf('admin')!=-1?'margin_t_0':'']"><!-- :class="[!islogin?'margin_t_0':'']"-->
         <div :class="['clearfix',$route.path.indexOf('admin')==-1?'container':'content']">
-            <login v-if="islogin" :name="123"></login>
+            <login v-if="islogin"></login>
 
             <div class="row" v-if="!islogin">
                 <div class="row-left col-md-2 col-sm-4">

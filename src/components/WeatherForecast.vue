@@ -70,7 +70,7 @@
 			  }  
 			})  
 		},
-		mounted:function(){
+		mounted(){
 			console.log(this.weather);
 		}
 	}  

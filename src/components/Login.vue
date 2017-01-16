@@ -15,7 +15,6 @@
 			    </div>
 			</div>
 			<a href="javascript:;" @click="login" class="btn btn-primary btn-sm btn-block" style="width:40%;margin:20px auto 0">登录</a>
-			{{name}}
 		</div>
 	</div>
 </template>
@@ -28,7 +27,10 @@
 		background-color: #fff;
 		box-shadow: 1px 1px 5px #fff;
 	}
-	
+	.login h2{
+		padding:30px 0 10px;
+		margin: 0;
+	}
 	.login-content{
 		padding: 30px 20px 20px;
 	}
@@ -52,9 +54,6 @@
 			serverurl(){
 				return this.$store.state.serverurl
 			}
-		},
-		props:{
-			name
 		},
 		mounted(){
 	      // localStorage.setItem('demongao_user','123');

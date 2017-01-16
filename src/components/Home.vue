@@ -36,7 +36,7 @@
 		  		var data = response.data;
 		  		if (data.status) {
 		 			this.articles = data.data;
-		 			console.log(this.articles);
+		 			// console.log(this.articles);
 		  		}else{
 		  			alert(data.msg);
 		  		}

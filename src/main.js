@@ -14,7 +14,7 @@ import TimeAxis from './components/TimeAxis'
 
 import Admin from './components/Admin/Admin'
 import Admin_AddArticle from './components/Admin/AddArticle'
-
+import Admin_Sign from './components/Admin/Sign';
 import 'bootstrap/dist/css/bootstrap.min.css'
 //引入
 import NProgress from 'nprogress'
@@ -57,6 +57,10 @@ const routes = [
 	{
 		path : '/admin_addArticle',
 		component: Admin_AddArticle
+	},
+	{
+		path : '/admin_sign',
+		component : Admin_Sign
 	}
 
 ];
