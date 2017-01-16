@@ -70,13 +70,22 @@
 			addArticle(){
 				var article = this.article;
 				if(article.title==""){
-					alert("标题不能为空!");
+					this.$message({
+			            type: 'info',
+			            message: "标题不能为空!"
+			        });
 					return ;
 				}else if(article.content==""){
-					alert("内容不能为空!");
+					this.$message({
+			            type: 'info',
+			            message: "内容不能为空!"
+			        });
 					return ;
 				}else if(this.tag==""){
-					alert("标签不能为空!");
+					this.$message({
+			            type: 'info',
+			            message: "标签不能为空!"
+			        });
 					return ;
 				}
 				article.tag = this.tag;
@@ -87,10 +96,17 @@
 	  				console.log(data)
 	  				if (data.status) {
 	  					alert(data.msg);
+	  					this.$message({
+			                type: 'success',
+			                message: data.msg
+			            });
 	  					this.$router.push({path:"/admin_articles"});
 	  					this.$store.dispatch('addarticle_toggle_modal')
 	  				}else{
-	  					alert(data.msg);
+	  					this.$message({
+			                type: 'error',
+			                message: data.msg
+			            });
 	  				}
 				})
 

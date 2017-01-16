@@ -14,17 +14,19 @@
 		data(){
 			return {
 				style : this.datas.style,
-				items : this.datas.items
+				items : this.datas.items,
 			}
 		},
 		props: {
         	datas: Object
         },
         methods : {
-        	add(){
-        		this.$emit('add');
-        	}
-        }
+        	
+        },
+        mounted(){
+        	
+			
+		}
 	}
 </script>
 <style>

@@ -4,7 +4,7 @@
 			<p class="title">
 				<span>{{pubdate}}</span>
 				<span>星期{{week}}</span>
-				<span>烟台</span>
+				<span>章丘</span>
 			</p>
 			<figcaption class="weather-nowday-figcaption">
 				<h2>
@@ -47,7 +47,7 @@
 			var _self = this;
 			JSONP('http://op.juhe.cn/onebox/weather/query', {  
 			  data: {  
-			      	cityname:'烟台',
+			      	cityname:'章丘',
   					dataType:'json',
   					key:"69a45338e81d01fb2b9e3d322fdc9e99"  
 			  },  

@@ -6,6 +6,10 @@ import VueAxios from 'vue-axios'
 /*管理全局变量*/
 import store from './store'				//vuex
 
+//引入element ui库
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
+
 import App from './App'
 import Home from './components/Home'
 import Sign from './components/Sign'
@@ -22,6 +26,7 @@ import 'nprogress/nprogress.css'
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
+Vue.use(ElementUI)
 /*路由配置*/
 const routes = [
 	{
