@@ -11,14 +11,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 
 import App from './App'
-import Home from './components/Home'
-import Sign from './components/Sign'
-import Article from './components/Article'
-import TimeAxis from './components/TimeAxis'
-
-import Admin from './components/Admin/Admin'
-import Admin_AddArticle from './components/Admin/AddArticle'
-import Admin_Sign from './components/Admin/Sign';
+import routes from './routes'
 import 'bootstrap/dist/css/bootstrap.min.css'
 //引入
 import NProgress from 'nprogress'
@@ -27,48 +20,7 @@ import 'nprogress/nprogress.css'
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
 Vue.use(ElementUI)
-/*路由配置*/
-const routes = [
-	{
-		path : '/',
-		redirect: { name: 'home',params:{tag:'all'}},
-	},
-	{
-		path : '/home/:tag',
-		name : 'home',
-		component : Home
-	},
-	{
-		path : '/sign',
-		component : Sign
-	},
-	{
-		path : '/article/:id',
-		name : 'article',
-		component : Article
-	},
-	{
-		path : '/timeaxis',
-		component : TimeAxis
-	},
 
-
-
-	//后台管理端
-	{
-		path : '/admin_home',
-		component : Admin
-	},
-	{
-		path : '/admin_addArticle',
-		component: Admin_AddArticle
-	},
-	{
-		path : '/admin_sign',
-		component : Admin_Sign
-	}
-
-];
 const router = new VueRouter({
 	mode: 'history',
   	routes

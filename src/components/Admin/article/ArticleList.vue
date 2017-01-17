@@ -1,20 +1,15 @@
 <template>
   <div class="adminsign">
-    <el-breadcrumb separator="/" class="adminsign-head">
-      <el-breadcrumb-item :to="{ path: '/admin_home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>标签管理</el-breadcrumb-item>
-    </el-breadcrumb>
     <div class="adminsign-content">
       <div class="btnteam">
         <el-button type="primary" icon="plus" @click="handleEdit">添加</el-button>
         <el-input
           class="tagSearc"
-          placeholder="请输入标签名称"
+          placeholder="请输入文章名称"
           icon="search"
-          v-model="tag_search"
+          v-model="searchVal"
           :on-icon-click="handleEdit">
         </el-input>
-        <!-- <el-button type="primary" icon="search">搜索</el-button> -->
       </div>
       <el-table
         v-loading.body="loading"
@@ -31,7 +26,14 @@
           </template>
         </el-table-column>
         <el-table-column
-          label="标签名称"
+          label="标题">
+          <template scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.title }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="标签"
+          width="180"
           >
           <template scope="scope">
             <div slot="reference" class="name-wrapper">
@@ -51,21 +53,22 @@
           </template>
         </el-table-column>
       </el-table>
+      <div class="block">
+	    <span class="demonstration"></span>
+	        <el-pagination
+	          @size-change="handleSizeChange"
+	          @current-change="handleCurrentChange"
+	          :current-page="currentPage"
+	          :page-sizes="pageSizes"
+	          :page-size="pageSize"
+	          layout="total, sizes, prev, pager, next, jumper"
+	          :total="total">
+	        </el-pagination>
+	    </div>
+    </div>
     </div>
     
-    <!-- <div class="block">
-      <span class="demonstration"></span>
-        <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage"
-          :page-sizes="pageSizes"
-          :page-size="pageSize"
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="total">
-        </el-pagination>
-      </div>
-    </div> -->
+    
   </div>
 </template>
 
@@ -75,56 +78,22 @@
       return {
         tableData: [],
         loading: true,
-        tag_search:''
-        // pageSizes:[2,4,6,8],
-        // pageSize: 2,
-        // currentPage:1,
-        // total:8
+        searchVal:'',
+        tagType:'all',
+        pageSizes:[2,4,6,8],
+        pageSize: 2,
+        currentPage:1,
+        total:8
       }
     },
     methods: {
       handleEdit(index, row) {
-        var params = {
-          tag:''
-        }
-        var inputPlaceholder = '标签名称';
-        if(typeof(row) != "undefined"){
-
-          params._id = row._id;
-          inputPlaceholder = row.tag;
-        }
-        console.log(params);
-        this.$prompt('请输入想要添加的标签名称', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          inputPlaceholder:inputPlaceholder,
-          inputPattern: /^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$$/,
-          inputErrorMessage: '请输入2-20位英文、数字或汉字'
-        }).then(({ value }) => {
-          params.tag = value;
-          this.axios.post(this.$store.state.serverurl+'api/saveTag',params).then((response) => {
-            var data = response.data;
-            this.loading=false;
-            if (data.status) {
-              typeof(row) != "undefined" ? this.tableData[index].tag=data.tag : this.tableData.push(data.tag)
-              // this.tableData.push(data.tag);
-              this.$message({
-                type: 'success',
-                message: data.msg
-              });
-            }else{
-              this.$message({
-                type: 'error',
-                message: data.msg
-              });
-            }
-          })
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '取消输入'
-          });       
-        });
+      	if (typeof(row)!="undefined") {
+      		this.$router.push('/admin_articles/edit/'+row._id);
+      	}else{
+      		this.$router.push('/admin_articles/add');
+      	}
+        
       },
       handleDelete(index, row) {
         console.log(index, row);
@@ -133,7 +102,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.axios.post(this.$store.state.serverurl+'api/delTag',{
+          this.axios.post(this.$store.state.serverurl+'api/delArticle',{
             _id:row._id,
           }).then((response) => {
             var data = response.data;
@@ -165,14 +134,20 @@
       handleCurrentChange(val) {
         this.currentPage = val;
         console.log(`当前页: ${val}`);
-      }
+      },
     },
     mounted(){
-      this.axios.get(this.$store.state.serverurl+'api/getTags').then((response) => {
+      this.axios.get(this.$store.state.serverurl+'api/getArticles',{
+      	params:{
+		  	tag:this.tagType
+	  	}
+      }).then((response) => {
           var data = response.data;
+          console.log(data);
           this.loading=false;
           if (data.status) {
             this.tableData = data.data;
+            console.log(data.data);
           }else{
             alert(data.tableData);
           }

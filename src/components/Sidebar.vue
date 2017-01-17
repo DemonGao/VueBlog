@@ -43,11 +43,9 @@
 		      <ul>
 		      	<li><router-link to="/admin_home">首页</router-link><li>
 		      	<li>
-		      		<router-link to="/admin_articles">文章管理</router-link>
+		      		<router-link to="/admin_articles" :class="{'router-link-active':$route.path.indexOf('article')!=-1}">文章管理</router-link>
 		      	</li>
-		      	<li>
-		      		<router-link to="/admin_addArticle">发布文章</router-link>
-		      	</li>
+		      	
 		      	<li><router-link to="/admin_sign">标签管理</router-link></li>
 		      	<li><router-link to="/admin_timeaxis">时间轴</router-link></li>
 		      	<li><router-link to="/home/all">博客</router-link></li>

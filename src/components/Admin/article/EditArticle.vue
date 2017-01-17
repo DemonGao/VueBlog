@@ -1,9 +1,8 @@
 <template>
 	<div id="addArticle" class="editor">
-    <!-- <model></model> -->
-    <div class="editor-head">
+    <div class="editor-title">
       <input type="text" placeholder="请输入文章标题" @input="updateTitle"/>
-      <a href="#" @click="showModel">发表博客</a>
+      <a href="javascript:;" @click="showModel">重新发布</a>
     </div>
 	  <div class="editor-content clearfix">
       <div class="col-xs-6 write">
@@ -13,9 +12,9 @@
     </div>
 	</div>
 </template>
+<!-- {{$route.params.id}} -->
 <script type="text/javascript">
   import marked from 'marked'
-  // import Model from './../Util/Model'
 	export default{
     // components:{
     //   'model' : Model
@@ -53,13 +52,21 @@
 	}
 </script>
 <style type="text/css" scoped>
+  
 .editor{
   /*background-color: #F7FED8;*/
   font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #333;
   height: 100%;
+  background-color: #fff;
 }
-.editor .editor-head{
+.editor-head{
+  padding: 20px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border-bottom: 10px solid #f5f5f5;
+}
+.editor .editor-title{
   height: 80px;
 }
 .editor .editor-content{
@@ -75,7 +82,7 @@
   background-color: #fff;
   padding: 20px;
 }
-.editor .editor-head input{
+.editor .editor-title input{
   float: left;
   height: 80px;
   width: 100%;
@@ -85,7 +92,7 @@
   border:none;
   outline:none;
 }
-.editor .editor-head a{
+.editor .editor-title a{
   float: left;
   display: block;
   width: 150px;
