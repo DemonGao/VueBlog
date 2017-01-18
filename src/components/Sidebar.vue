@@ -36,7 +36,7 @@
 		<nav class="panel sidebar" v-if="$route.path.indexOf('admin')!=-1">
 		    <div class="panel-heading">
 		      <img src="./../assets/logo.jpg" >
-		      <router-link to="/admin" tag="h4" class="text-center">DemonGao</router-link>
+		      <h4 class="text-center">DemonGao</router-link>
 		      <span class="text-center">全栈工程师</span>
 		    </div>
 		    <div class="panel-body">
@@ -47,8 +47,7 @@
 		      	</li>
 		      	
 		      	<li><router-link to="/admin_sign">标签管理</router-link></li>
-		      	<li><router-link to="/admin_timeaxis">时间轴</router-link></li>
-		      	<li><router-link to="/home/all">博客</router-link></li>
+		      	<li><router-link to="/home/all">返回博客</router-link></li>
 		      </ul>
 		    </div>
 	  	</nav>

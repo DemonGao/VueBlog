@@ -170,6 +170,7 @@
     mounted(){
       this.axios.get(this.$store.state.serverurl+'api/getTags').then((response) => {
           var data = response.data;
+          console.log(data);
           this.loading=false;
           if (data.status) {
             this.tableData = data.data;

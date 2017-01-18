@@ -15,6 +15,7 @@ const state = {
   article:{
     title:'',
     content:'',
+    markdown:'',
     tag:''
   },
   addmodal:false,

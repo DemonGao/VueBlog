@@ -1,7 +1,6 @@
 <template>
-  <div class="adminsign">
-    <div class="adminsign-content">
-      <div class="btnteam">
+  <div class="article-content">
+    <div class="btnteam">
         <el-button type="primary" icon="plus" @click="handleEdit">添加</el-button>
         <el-input
           class="tagSearc"
@@ -10,8 +9,8 @@
           v-model="searchVal"
           :on-icon-click="handleEdit">
         </el-input>
-      </div>
-      <el-table
+    </div>
+    <el-table
         v-loading.body="loading"
         element-loading-text="拼命加载中..."
         :data="tableData"
@@ -52,23 +51,19 @@
               @click="handleDelete(scope.$index, scope.row)">删除</el-button>
           </template>
         </el-table-column>
-      </el-table>
-      <div class="block">
+    </el-table>
+    <div class="block">
 	    <span class="demonstration"></span>
-	        <el-pagination
-	          @size-change="handleSizeChange"
-	          @current-change="handleCurrentChange"
-	          :current-page="currentPage"
-	          :page-sizes="pageSizes"
-	          :page-size="pageSize"
-	          layout="total, sizes, prev, pager, next, jumper"
-	          :total="total">
-	        </el-pagination>
-	    </div>
-    </div>
-    </div>
-    
-    
+	    <el-pagination
+	      @size-change="handleSizeChange"
+	      @current-change="handleCurrentChange"
+	      :current-page="currentPage"
+	      :page-sizes="pageSizes"
+	      :page-size="pageSize"
+	      layout="total, sizes, prev, pager, next, jumper"
+	      :total="total">
+	    </el-pagination>
+	  </div>
   </div>
 </template>
 
@@ -151,24 +146,12 @@
           }else{
             alert(data.tableData);
           }
-      })
-
-      
+      }) 
     },
   }
 </script>
 <style type="text/css" scoped="scoped">
-.adminsign{
-  height: 100%;
-  background-color: #fff;
-}
-  .adminsign-head{
-    padding: 20px;
-    font-size: 16px;
-    box-sizing: border-box;
-    border-bottom: 10px solid #f5f5f5;
-  }
-  .adminsign-content{
+  .article-content{
     padding: 0 20px;
   }
     .btnteam{

@@ -34,13 +34,10 @@
 			},
 			article(){
 				return this.$store.state.article
-			},
-			serverurl(){
-				return this.$store.state.serverurl
 			}
 		},
 		mounted(){
-			this.axios.get(this.serverurl+'api/getTags').then((response) => {
+			this.axios.get(this.$store.state.serverurl+'api/getTags').then((response) => {
 	  			var data = response.data;
 	  			if (data.status) {
 	  				this.tags = data.data;
@@ -48,12 +45,14 @@
 	  				alert(data.msg);
 	  			}
 			})
-	      // localStorage.setItem('demongao_user','123');
-	      // let demongao_user = localStorage.getItem('demongao_user');
-	      // if(localStorage.getItem('demongao_user')!=null){
-	      //   this.islogin=true;
-	      // }
-	      // alert(demongao_user);
+			var getTag = setInterval(()=>{
+				this.tag = this.$store.state.article.tag;
+				// console.log(this.tag);
+				// if(this.$store.state.article.tag==this.tag){
+				// 	clearInterval(getTag);
+				// }
+			},10000)
+
     	},
 		methods:{
 			close(){
@@ -90,12 +89,12 @@
 				}
 				article.tag = this.tag;
 
-				this.axios.post(this.serverurl+'api/saveArticle',this.article).then((response) => {
+				this.axios.post(this.$store.state.serverurl+'api/saveArticle',this.article).then((response) => {
 
 	  				var data = response.data;
 	  				console.log(data)
 	  				if (data.status) {
-	  					alert(data.msg);
+	  					// alert(data.msg);
 	  					this.$message({
 			                type: 'success',
 			                message: data.msg
