@@ -13,6 +13,7 @@ import 'element-ui/lib/theme-default/index.css'
 import App from './App'
 import routes from './routes'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './assets/monokai-sublime.css'
 //引入
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'

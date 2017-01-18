@@ -1,6 +1,6 @@
 <template>
     <div id="wrapper" :class="[$route.path.indexOf('admin')!=-1?'margin_t_0':'']"><!-- :class="[!islogin?'margin_t_0':'']"-->
-        <div :class="['clearfix',$route.path.indexOf('admin')==-1?'container':'content']">
+        <div id="wrapper_content" :class="['clearfix',$route.path.indexOf('admin')==-1?'container':'content']">
             <login v-if="islogin"></login>
 
             <div class="row" v-if="!islogin">
@@ -70,12 +70,8 @@
       }
     },
     mounted(){
-      // localStorage.setItem('demongao_user','123');
-      // let demongao_user = localStorage.getItem('demongao_user');
-      // if(localStorage.getItem('demongao_user')!=null){
-      //   this.islogin=true;
-      // }
-      // alert(demongao_user);
+      // console.log(document.getElementById("wrapper_content").clientHeight+'px');
+      document.getElementById("wrapper").style.height = document.body.offsetHeight+'px';
     },
     methods:{
       // 过渡进入
@@ -123,11 +119,11 @@
 <style type="text/css" scoped>
   
   #wrapper{
-      background-color:#F5F5F5;
-      height: 100%;
+      /*background-color:#F5F5F5;*/
+      /*height: 100%;*/
       padding-top:100px;
   }
-  #wrapper .container{padding-left: 0;padding-right: 0}
+  #wrapper .container{padding-left: 0;padding-right: 0;}
   #wrapper .panel{
       box-sizing: border-box;
       width: 100%;

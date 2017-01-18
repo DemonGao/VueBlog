@@ -31,7 +31,7 @@
   background-color: #fff;
 }
   .article-head{
-    padding: 20px;
+    padding: 20px 40px 20px 20px;
     font-size: 16px;
     box-sizing: border-box;
     border-bottom: 10px solid #f5f5f5;

@@ -17,6 +17,12 @@
 <!-- {{$route.params.id}} -->
 <script type="text/javascript">
   import marked from 'marked'
+  import highlight from 'highlight.js'
+  marked.setOptions({
+    highlight: function (code) {
+      return highlight.highlightAuto(code).value;
+    }
+  });
 	export default{
     // components:{
     //   'model' : Model
@@ -108,7 +114,7 @@
 	}
 </script>
 <style type="text/css" scoped>
-  
+ /*@import './../../../assets/monokai-sublime.css';*/
 .editor{
   /*background-color: #F7FED8;*/
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -185,14 +191,9 @@
   overflow-y:auto;
   overflow-x:hidden;
 }
-textarea, .editor .editor-content .view {
-  /*display: inline-block;
-  width: 49%;
-  vertical-align: top;
-  box-sizing: border-box;
-  padding: 20px 20px 0;
-  overflow-y:auto;
-  overflow-x:hidden;*/
+.editor .editor-content .view pre{
+    /*color: #fff;*/
+    background-color: #23241F !important;
 }
 
 textarea {

@@ -152,7 +152,7 @@
 </script>
 <style type="text/css" scoped="scoped">
   .article-content{
-    padding: 0 20px;
+    padding:0 40px 0 20px;
   }
     .btnteam{
       padding:20px 0;
