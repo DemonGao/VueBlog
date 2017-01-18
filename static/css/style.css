@@ -5,6 +5,10 @@
 	display: block;
 }
 @media (min-width: 768px){
+  html,body{
+    overflow-y: scroll;
+    margin-right:-17px !important;
+  }
 	#wrapper{
       	padding-top: 80px;
     }

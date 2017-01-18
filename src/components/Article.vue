@@ -45,5 +45,6 @@
 	.article-date{
 		float: right;
 		font-size: 12px;
+		line-height: 39px
 	}
 </style>
