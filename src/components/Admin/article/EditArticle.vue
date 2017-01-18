@@ -19,6 +19,13 @@
   import marked from 'marked'
   import highlight from 'highlight.js'
   marked.setOptions({
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: true,
+    smartLists: true,
+    smartypants: false,
     highlight: function (code) {
       return highlight.highlightAuto(code).value;
     }

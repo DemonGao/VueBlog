@@ -14,15 +14,11 @@
 </template>
 <script type="text/javascript">
   import marked from 'marked'
+  import highlight from 'highlight.js'
   marked.setOptions({
-    renderer: new marked.Renderer(),
-    gfm: true,
-    tables: true,
-    breaks: false,
-    pedantic: false,
-    sanitize: true,
-    smartLists: true,
-    smartypants: false
+    highlight: function (code) {
+      return highlight.highlightAuto(code).value;
+    }
   });
   export default{
     data(){
@@ -65,6 +61,17 @@
     mounted(){
       //设置mardown转换后 试图栏的高度
       document.getElementById("view").style.height=document.getElementById("write").offsetHeight+'px';
+      var obj ={
+          key:'_id',
+          val:null
+      }
+      this.$store.dispatch('update_article',obj)
+
+      var obj ={
+          key:'title',
+          val:''
+      }
+      this.$store.dispatch('update_article',obj)
     }
   }
 
