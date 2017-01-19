@@ -5,7 +5,7 @@
 		    <div class="panel-heading">
 		      <img src="./../assets/logo.jpg" >
 		      <router-link to="/admin_home" tag="h4" class="text-center">DemonGao</router-link>
-		      <span class="text-center">全栈工程师</span>
+		      <span class="text-center writing">全栈工程师</span>
 		    </div>
 		    <div class="panel-body">
 		      <ul>
@@ -78,6 +78,14 @@
 				alert(1);
 			}
 		},
+		mounted(){
+			$$('.writing').forEach(function(text){
+				var len = text.textContent.length,
+					s = text.style;
+				s.width = len + 'ch';
+				s.animationTimingFunction = "steps("+len+"),steps(1)";
+			})
+		}
 	}
 </script>
 <style type="text/css" scoped>
@@ -135,31 +143,6 @@
 		color: #fff;
 		background-color: rgba(101,248,205,1);
 	}
-	/*#sidebar .navbar{
-		height: 50px;
-	}
-	#sidebar .collapse{
-		display: block;
-		opacity:0;
-		overflow: hidden;
-		transition: .5s all;
-		background-color: #fff;
-		border-bottom:1px solid #ccc;
-	}
-	#sidebar .nav-title{
-		float:left;
-		margin:0;
-		height:50px;
-		width: 100%;
-		padding-left:50px;
-		padding-right: 44px;
-		text-align: center;
-		line-height:50px;
-		margin-top: -50px;
-	}
-	#sidebar .navbar-brand{
-		padding: 0px;
-	}*/
 	.panel{ margin-bottom:0; }
 	.panel.sidebar{
 		height: 100%;
@@ -172,8 +155,7 @@
 	}
 	.panel.sidebar .panel-heading span{
 		display: block;
-		padding: 0 10px;
-		margin:10px 0; 
+		margin:10px auto; 
 	}
 	.panel.sidebar .panel-heading h4{
 		position: relative;
@@ -227,5 +209,24 @@
 
 	.height100{
 		height: 100%;
+	}
+
+
+	/*打字动画*/
+	@keyframes typing{
+		0%{ width:0;}
+		30%{ width:9ch; }
+		100%{ width:9ch; }
+	}
+	@keyframes caret{
+		50% { border-color:currentColor;}
+	}
+	.writing{
+		/*width: 9ch;*/
+		overflow:hidden;
+		white-space: nowrap;
+		border-right: 1px solid transparent;
+		animation: typing 10s  infinite,
+				   caret 1s  infinite;
 	}
 </style>
