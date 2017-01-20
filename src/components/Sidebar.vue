@@ -215,14 +215,14 @@
 	/*打字动画*/
 	@keyframes typing{
 		0%{ width:0;}
-		30%{ width:9ch; }
+		20%{ width:9ch; }
 		100%{ width:9ch; }
 	}
 	@keyframes caret{
 		50% { border-color:currentColor;}
 	}
 	.writing{
-		/*width: 9ch;*/
+		width: 9ch;
 		overflow:hidden;
 		white-space: nowrap;
 		border-right: 1px solid transparent;
