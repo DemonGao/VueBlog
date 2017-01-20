@@ -30,7 +30,7 @@
 		},
 		computed:{
 			orderedArticles(){
-				return _.orderBy(this.articles,'title','asc')
+				return _.orderBy(this.articles,'date','desc')
 			}
 		},
 		mounted(){
