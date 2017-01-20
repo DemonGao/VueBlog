@@ -3,9 +3,10 @@
 		<!-- <div class="panel-heading">
 			<h3>文章</h3>
 		</div> -->
+
 		<div class="panel-body">
 			<ul class="home-list">
-				<li v-for="item in articles" class="home-item">
+				<li v-for="item in orderedArticles" class="home-item">
 					<h1>{{item.title}}<span>{{new Date(item.date).Format("YYYY-MM-DD")}}</span></h1>
 					<div class="home-item-content" v-html="item.content"></div>
 					<div class="home-item-footer">
@@ -25,6 +26,11 @@
 		data(){
 			return {
 				articles:[]
+			}
+		},
+		computed:{
+			orderedArticles(){
+				return _.orderBy(this.articles,'title','asc')
 			}
 		},
 		mounted(){

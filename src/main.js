@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'		//路由
+
+import _ from 'lodash'
 /*ajax*/
 import axios from 'axios'
 import VueAxios from 'vue-axios'
