@@ -18,6 +18,16 @@
 					</div>
 				</li>
 		    </ul>
+
+        <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-sizes="pageSizes"
+          :page-size="pageSize"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="total">
+        </el-pagination>
 		</div>
 	</div>
 </template>
@@ -25,7 +35,11 @@
 	export default{
 		data(){
 			return {
-				articles:[]
+				articles:[],
+        pageSizes:[2,4,6],
+        pageSize: 2,
+        currentPage:1,
+        total:0
 			}
 		},
 		computed:{
@@ -34,20 +48,38 @@
 			}
 		},
 		mounted(){
-			this.axios.get(this.$store.state.serverurl+'api/getArticles',{
-					params:{
-		  				tag:this.$route.params.tag,
-	  				}
-				}).then((response) => {
-		  		var data = response.data;
-		  		if (data.status) {
-		 			this.articles = data.data;
-		 			// console.log(this.articles);
-		  		}else{
-		  			alert(data.msg);
-		  		}
-			})
-	    },
+      this.ajax()
+    },
+    methods:{
+      handleSizeChange(val) {
+        console.log(`每页 ${val} 条`);
+        this.pageSize = val;
+        this.ajax();
+      },
+      handleCurrentChange(val) {
+        console.log(`当前页: ${val}`);
+        this.currentPage = val;
+        this.ajax();
+      },
+      ajax(){
+        this.axios.get(this.$store.state.serverurl+'api/getArticles',{
+          params:{
+            tag : this.$route.params.tag,
+            page : this.currentPage,
+            pageSize : this.pageSize
+          }
+        }).then((response) => {
+          var data = response.data;
+          if (data.status) {
+            this.articles = data.data.results;
+            this.total = data.data.total;
+            // console.log(this.articles);
+          }else{
+            alert(data.msg);
+          }
+        })
+      }
+    }
 	}
 </script>
 <style type="text/css">
@@ -59,13 +91,13 @@
 	.home .panel-body{
 		padding: 0;
 	}
-	.home .panel-body ul{
+	.home .panel-body .home-list{
 		list-style: none;
 		padding-left: 0;
 		margin-bottom: 0;
 		background-color: #F5F5F5;
 	}
-	.home .panel-body ul li{
+	.home .panel-body .home-list li{
 		position: relative;
 		padding:10px 30px;
 		border-top: 1px solid #eee;
@@ -81,7 +113,7 @@
 	/*.home .panel-body ul li:nth-child(1){
 		margin-top: 10px;
 	}*/
-	.home .panel-body ul li:after{
+	.home .panel-body .home-list li:after{
 		content: '';
 	    position: absolute;
 	    bottom: 1px;
@@ -92,10 +124,10 @@
 	    -webkit-transition: all .4s ease-in;
 	    transition: all .4s ease-in;
 	}
-	.home .panel-body ul li:hover:after{
-		
+	.home .panel-body .home-list li:hover:after{
+
 	    width: 100%;
-	    
+
 	    -webkit-transition: all .4s ease-in;
 	    transition: all .4s ease-in;
 	}

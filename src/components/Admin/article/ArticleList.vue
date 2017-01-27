@@ -88,7 +88,7 @@
       	}else{
       		this.$router.push('/admin_articles/add');
       	}
-        
+
       },
       handleDelete(index, row) {
         console.log(index, row);
@@ -120,7 +120,7 @@
           this.$message({
             type: 'info',
             message: '已取消删除'
-          });          
+          });
         });
       },
       handleSizeChange(val) {
@@ -141,12 +141,12 @@
           console.log(data);
           this.loading=false;
           if (data.status) {
-            this.tableData = data.data;
+            this.tableData = data.data.results;
             console.log(data.data);
           }else{
             alert(data.tableData);
           }
-      }) 
+      })
     },
   }
 </script>

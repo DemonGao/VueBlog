@@ -19,10 +19,10 @@ const state = {
     tag:''
   },
   addmodal:false,
-  	point:{
-  		lng:116.404, //纬度
-  	  lat:39.915119    //经度
-    },
+  	// point:{
+  	// 	lng:116.404, //纬度
+  	//   lat:39.915119    //经度
+    // },
 };
 
 export default new Vuex.Store({
