@@ -125,29 +125,53 @@
       },
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
+        this.pageSize = val;
+        this.ajax();
       },
       handleCurrentChange(val) {
-        this.currentPage = val;
         console.log(`当前页: ${val}`);
+        this.currentPage = val;
+        this.ajax();
       },
-    },
-    mounted(){
-      this.axios.get(this.$store.state.serverurl+'api/getArticles',{
-      	params:{
-		  	tag:this.tagType
-	  	}
-      }).then((response) => {
+      ajax(){
+        this.axios.get(this.$store.state.serverurl+'api/getArticles',{
+          params:{
+            tag:this.tagType,
+            page : this.currentPage,
+            pageSize : this.pageSize
+          }
+        }).then((response) => {
           var data = response.data;
-          console.log(data);
           this.loading=false;
           if (data.status) {
             this.tableData = data.data.results;
-            console.log(data.data);
+            this.total = data.data.total;
+            // console.log(this.articles);
           }else{
-            alert(data.tableData);
+            alert(data.msg);
           }
-      })
+        })
+      }
     },
+    mounted(){
+        this.ajax();
+//      this.axios.get(this.$store.state.serverurl+'api/getArticles',{
+//      	params:{
+//		  	tag:this.tagType
+//	  	}
+//      }).then((response) => {
+//          var data = response.data;
+//          console.log(data);
+//          this.loading=false;
+//          if (data.status) {
+//            this.tableData = data.data.results;
+//            console.log(data.data);
+//          }else{
+//            alert(data.tableData);
+//          }
+//      })
+    },
+
   }
 </script>
 <style type="text/css" scoped="scoped">
