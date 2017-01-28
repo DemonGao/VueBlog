@@ -97,7 +97,7 @@
 		margin-bottom: 0;
 		background-color: #F5F5F5;
 	}
-	.home .panel-body .home-list li{
+	.home .panel-body .home-list .home-item{
 		position: relative;
 		padding:10px 30px;
 		border-top: 1px solid #eee;
@@ -113,7 +113,7 @@
 	/*.home .panel-body ul li:nth-child(1){
 		margin-top: 10px;
 	}*/
-	.home .panel-body .home-list li:after{
+	.home .panel-body .home-list .home-item:after{
 		content: '';
 	    position: absolute;
 	    bottom: 1px;
@@ -124,7 +124,7 @@
 	    -webkit-transition: all .4s ease-in;
 	    transition: all .4s ease-in;
 	}
-	.home .panel-body .home-list li:hover:after{
+	.home .panel-body .home-list .home-item:hover:after{
 
 	    width: 100%;
 

@@ -1,11 +1,11 @@
 <template>
 	<div class="article">
-		<h1 class="article-head">
+		<h1 class="article-head clearfix">
 			{{data.title}}
 			<span class="article-date">{{new Date(data.date).Format("YYYY-MM-DD")}}</span>
 		</h1>
 		<div v-html="data.content">
-			
+
 		</div>
 	</div>
 </template>

@@ -75,10 +75,10 @@
         loading: true,
         searchVal:'',
         tagType:'all',
-        pageSizes:[2,4,6,8],
-        pageSize: 2,
+        pageSizes:[10,15,20],
+        pageSize: 10,
         currentPage:1,
-        total:8
+        total:0
       }
     },
     methods: {
