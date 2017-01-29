@@ -47,4 +47,10 @@
 		font-size: 12px;
 		line-height: 39px
 	}
+  @media (max-width: 768px) {
+    .article{
+      padding:10px;
+    }
+
+  }
 </style>

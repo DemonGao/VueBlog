@@ -7,7 +7,7 @@
 
 @media (min-width: 768px){
   html,body{
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
     /*margin-right:-17px !important;*/
   }
 	#wrapper{
