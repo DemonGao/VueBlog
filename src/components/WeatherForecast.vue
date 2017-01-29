@@ -45,13 +45,13 @@
 		},
 		beforeCreate:function(){
 			var _self = this;
-			JSONP('http://op.juhe.cn/onebox/weather/query', {  
-			  data: {  
+			JSONP('http://op.juhe.cn/onebox/weather/query', {
+			  data: {
 			      	cityname:'章丘',
   					dataType:'json',
-  					key:"69a45338e81d01fb2b9e3d322fdc9e99"  
-			  },  
-			  callback: function (data) {  
+  					key:"69a45338e81d01fb2b9e3d322fdc9e99"
+			  },
+			  callback: function (data) {
 			    // data 是服务端返回的数据
 			    var weather = data.result.data;
 			    _self.pubdate = weather.pubdate;//日期
@@ -66,22 +66,22 @@
 			    _self.lowweather = weather.weather[0].info.night[2];
 			    _self.pm25 = weather.pm25.pm25.pm25;
 			    _self.quality = weather.pm25.pm25.quality;
-			    console.log(weather); 
-			  }  
-			})  
+			    console.log(weather);
+			  }
+			})
 		},
 		mounted(){
 			console.log(this.weather);
 		}
-	}  
+	}
 </script>
 <style scoped>
 	/*天气css*/
 #weather{
 	box-sizing: border-box;
 	/*width:100%;*/
-	margin: 10px;
-	
+	/*margin: 10px;*/
+
 }
 .weather-nowday{
 	background-image: url('/static/img/weather_bg.png');
@@ -107,7 +107,7 @@
 	text-decoration: none;
 	cursor: pointer;
 	color: #83D2ED;
-	
+
 }
 .weather-nowday .title span:nth-child(1){
 	margin-right: 10px;
@@ -115,7 +115,7 @@
 .weather-nowday img{
 }
 .weather-nowday-figcaption{
-	
+
 }
 .weather-nowday-figcaption h2{
 	margin-top: 80px;
@@ -142,7 +142,7 @@
 	font-size: 12px;
 	display: inline-block;
 	position: relative;
-	top: -20px;	
+	top: -20px;
 	left: 50px;
 }
 .weather-nowday-figcaption h2 span:nth-child(2) p{
@@ -173,7 +173,7 @@
 	font-size: 12px;
 	margin-left: 10px;
 	display: inline-block;
-	vertical-align: top;	
+	vertical-align: top;
 }
 
 

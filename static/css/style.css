@@ -4,10 +4,11 @@
 .sm-show{
 	display: block;
 }
+
 @media (min-width: 768px){
   html,body{
     overflow-y: scroll;
-    margin-right:-17px !important;
+    /*margin-right:-17px !important;*/
   }
 	#wrapper{
       	padding-top: 80px;
@@ -16,8 +17,9 @@
       	display: block
     }
     .sm-show{
-    	display:none; 
+    	display:none;
     }
+
 }
 @media (min-width: 992px){
     .md-hiden{

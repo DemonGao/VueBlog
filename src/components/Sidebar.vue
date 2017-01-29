@@ -45,7 +45,7 @@
 		      	<li>
 		      		<router-link to="/admin_articles" :class="{'router-link-active':$route.path.indexOf('article')!=-1}">文章管理</router-link>
 		      	</li>
-		      	
+
 		      	<li><router-link to="/admin_sign">标签管理</router-link></li>
 		      	<li><router-link to="/home/all">返回博客</router-link></li>
 		      </ul>
@@ -65,13 +65,13 @@
 			click:function(){
 				var el = document.getElementById("bs-example-navbar-collapse-1");
 				if(this.collapse_show){
-					
+
 					Velocity(el, { /*translateY: '-186px',*/opacity:0 }, { duration: 300 })
 				}else{
 
 					Velocity(el, { /*translateY: '0',*/opacity:1 }, { duration: 300 })
 				}
-				
+
 				this.collapse_show = !this.collapse_show;
 			},
 			aclick:function(){
@@ -91,9 +91,11 @@
 <style type="text/css" scoped>
 	.mobile{
 		position: fixed;
+    left: 0;
 		top: 0;
 		width: 100%;
 		height: 100px;
+    /*padding: 0 15px;*/
 		box-sizing: border-box;
 		overflow: hidden;
 		background-color: #f5f5f5;
@@ -112,7 +114,7 @@
 		height: 40px;
 		line-height: 40px;
 		padding-left: 40px;
-		padding-right: 44px; 
+		padding-right: 44px;
 		text-align: center;
 	}
 	.mobile .mobile-head .head-left{
@@ -155,7 +157,7 @@
 	}
 	.panel.sidebar .panel-heading span{
 		display: block;
-		margin:10px auto; 
+		margin:10px auto;
 	}
 	.panel.sidebar .panel-heading h4{
 		position: relative;
@@ -181,14 +183,14 @@
 	.panel.sidebar .panel-body{
 		padding-left: 0px;
 		padding-right: 0px;
-	
+
 	}
 	.panel.sidebar .panel-body ul{
 		list-style: none;
 		padding-left: 0;
 	}
 	.panel.sidebar .panel-body ul li{
-		
+
 	}
 	.panel .panel-body ul li a{
 		display: block;

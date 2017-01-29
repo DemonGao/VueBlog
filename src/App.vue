@@ -19,7 +19,7 @@
                         v-on:leave-cancelled="leaveCancelled"
                     >
                         <router-view></router-view>
-                    </transition>  
+                    </transition>
                 </div>
                 <div class="'row-right' col-md-3 md-hiden" v-if="$route.path.indexOf('admin')==-1" >
                     <weather-forecast></weather-forecast>
@@ -59,7 +59,7 @@
             console.log("已登录");
             return false;
           }
-            
+
           console.log("未登录");
           return true;
       }
@@ -78,7 +78,7 @@
       // 设置过渡进入之前的组件状态
       beforeEnter: function (el) {
         el.style.opacity = 0;
-        
+
         Velocity(el, { translateX: '10%' })
       },
       // 设置过渡进入完成时的组件状态
@@ -117,7 +117,10 @@
   }
 </script>
 <style type="text/css" scoped>
-  
+  .row{
+    margin-left:0;
+    margin-right:0;
+  }
   #wrapper{
       /*background-color:#F5F5F5;*/
       /*height: 100%;*/
@@ -145,8 +148,16 @@
   #wrapper .content .row-center{
     height: 100%;
   }
+  #wrapper .row-center.col-sm-8{
+    padding-left: 0;
+    padding-right:0;
+  }
+  #wrapper .row-left.col-sm-4{
+    padding-left: 0;
+    /*padding-right:0;*/
+  }
   .margin_t_0{
     padding-top:0 !important;
   }
- 
+
 </style>
