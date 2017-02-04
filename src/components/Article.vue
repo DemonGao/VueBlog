@@ -17,6 +17,7 @@
 			}
 		},
 		mounted(){
+		  //获取文章内容
 			this.axios.get(this.$store.state.serverurl+'api/getArticle',{
 					params:{
 		  				id:this.$route.params.id,
@@ -30,6 +31,17 @@
 		  			alert(data.msg);
 		  		}
 			})
+      //浏览量+1
+      this.axios.post(this.$store.state.serverurl+'api/viewArticle',{id:this.$route.params.id})
+//        .then((response) => {
+//        var data = response.data;
+//        if (data.status) {
+//          this.data = data.data;
+//          console.log(this.data);
+//        }else{
+//          alert(data.msg);
+//        }
+//      })
 		}
 	}
 </script>
