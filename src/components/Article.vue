@@ -18,13 +18,25 @@
         <i class="iconfont icon-biaoqian"></i>分类: <router-link :to="{name:'home',params:{tag:data.tag}}" class="sign-item">{{data.tag}}</router-link>
       </span>
     </div>
-		<div v-html="data.content">
+    <div class="clearfix">
+      <div class="bdsharebuttonbox" data-tag="share_1" style="float:right">
+        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+        <!--<a class="bds_mshare" data-cmd="mshare"></a>-->
+        <a class="bds_qzone" data-cmd="qzone" href="#"></a>
+        <a class="bds_tsina" data-cmd="tsina"></a>
+        <a class="bds_renren" data-cmd="renren"></a>
+        <a class="bds_more" data-cmd="more">更多</a>
+        <a class="bds_count" data-cmd="count"></a>
+      </div>
+    </div>
+
+    <div v-html="data.content">
 
 		</div>
 	</div>
 </template>
 <script type="text/javascript">
-	export default{
+export default{
 		data(){
 			return {
 				data:{}
@@ -39,12 +51,14 @@
 				}).then((response) => {
 		  		var data = response.data;
 		  		if (data.status) {
-		 			this.data = data.data;
-		 			console.log(this.data);
+		 			  this.data = data.data;
+            localStorage.setItem("demongao_bdText",this.data.title)
+		 			  console.log(this.data);
 		  		}else{
 		  			alert(data.msg);
 		  		}
 			})
+
       //浏览量+1
       this.axios.post(this.$store.state.serverurl+'api/viewArticle',{id:this.$route.params.id})
 //        .then((response) => {
@@ -58,6 +72,7 @@
 //      })
 		}
 	}
+
 </script>
 <style type="text/css" scoped>
 	.article{
