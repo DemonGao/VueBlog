@@ -1,6 +1,7 @@
 <template>
     <div id="wrapper" :class="[$route.path.indexOf('admin')!=-1?'margin_t_0':'']"><!-- :class="[!islogin?'margin_t_0':'']"-->
-        <div id="wrapper_content" :class="['clearfix',$route.path.indexOf('admin')==-1?'container':'content']">
+
+      <div id="wrapper_content" :class="['clearfix',$route.path.indexOf('admin')==-1?'container':'content']">
             <login v-if="islogin"></login>
 
             <div class="row" v-if="!islogin">
@@ -26,6 +27,7 @@
                 </div>
             </div>
         </div>
+
         <model></model>
     </div>
 </template>
@@ -48,6 +50,7 @@
       'login':Login,
       'model' : Model
     },
+
     computed:{
       islogin(){
           if(this.$route.path.indexOf('admin')==-1){
@@ -66,10 +69,14 @@
     },
     data(){
       return {
-        abc:true
+        loadding:true
       }
     },
+    created(){
+//        document.getElementById("loadding").innerHTML="加载中.... demongao";
+    },
     mounted(){
+
       // console.log(document.getElementById("wrapper_content").clientHeight+'px');
       document.getElementById("wrapper").style.height = document.body.offsetHeight+'px';
     },

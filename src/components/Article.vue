@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <div v-html="data.content">
+    <div class="article-content" v-html="data.content">
 
 		</div>
 	</div>
@@ -74,7 +74,7 @@ export default{
 	}
 
 </script>
-<style type="text/css" scoped>
+<style type="text/css" scopep="scoped">
 	.article{
 		border-radius: 5px;
 		padding: 25px;
@@ -105,5 +105,20 @@ export default{
       padding:10px;
     }
 
+  }
+  .article-content h1,.article-content h2,.article-content >h3,.article-content >h4,.article-content >h5,.article-content >h6{
+    /*position: relative;*/
+    /*margin-left:10px;*/
+    color: #4bb5e4 ;
+  }
+  .article-content blockquote{
+    border-left: 2px solid #009A61;
+    background: #F6F6F6;
+    color: #555;
+    font-size: 1em;
+  }
+  .article-content a,.article-detail-meta a{
+    color: #009a61;
+    text-decoration: none;
   }
 </style>

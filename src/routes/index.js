@@ -1,16 +1,25 @@
-import Home from './../components/Home'
-import Sign from './../components/Sign'
-import Article from './../components/Article'
-import TimeAxis from './../components/TimeAxis'
+// import Home from './../components/Home'
+// import Sign from './../components/Sign'
+// import Article from './../components/Article'
+// import TimeAxis from './../components/TimeAxis'
+const Home = resolve => require(['./../components/Home.vue'], resolve)
+const Sign = resolve => require(['./../components/Sign.vue'], resolve)
+const Article = resolve => require(['./../components/Article.vue'], resolve)
+const TimeAxis = resolve => require(['./../components/TimeAxis.vue'], resolve)
 
+// import Admin from './../components/Admin/Admin'
+// import Admin_Article from './../components/Admin/article/Article'
+// import Admin_ArticleList from './../components/Admin/article/ArticleList'
+// import Admin_AddArticle from './../components/Admin/article/AddArticle'
+// import Admin_EditArticle from './../components/Admin/article/EditArticle'
+// import Admin_Sign from './../components/Admin/Sign';
 
-import Admin from './../components/Admin/Admin'
-import Admin_Article from './../components/Admin/article/Article'
-import Admin_ArticleList from './../components/Admin/article/ArticleList'
-import Admin_AddArticle from './../components/Admin/article/AddArticle'
-import Admin_EditArticle from './../components/Admin/article/EditArticle'
-import Admin_Sign from './../components/Admin/Sign';
-
+const Admin = resolve => require(['./../components/Admin/Admin.vue'], resolve)
+const Admin_Article = resolve => require(['./../components/Admin/article/Article.vue'], resolve)
+const Admin_ArticleList = resolve => require(['./../components/Admin/article/ArticleList.vue'], resolve)
+const Admin_AddArticle = resolve => require(['./../components/Admin/article/AddArticle.vue'], resolve)
+const Admin_EditArticle = resolve => require(['./../components/Admin/article/EditArticle.vue'], resolve)
+const Admin_Sign = resolve => require(['./../components/Admin/Sign.vue'], resolve)
 
 /*路由配置*/
 const routes = [
