@@ -8,7 +8,7 @@
       <div id="write" class="col-xs-6 write">
         <textarea  :value="input" @input="update"></textarea>
       </div>
-      <div id="view" class="col-xs-6 view" v-html="compiledMarkdown"></div> 
+      <div id="view" class="col-xs-6 view" v-html="compiledMarkdown"></div>
     </div>
   </div>
 </template>
@@ -76,8 +76,8 @@
   }
 
 </script>
-<style type="text/css" scoped>
-  
+<style type="text/css" scoped="scoped">
+
 .editor{
   /*background-color: #F7FED8;*/
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -176,5 +176,21 @@ textarea {
 
 code {
   color: #f66;
+}
+
+#view h1,#view h2,#view >h3,#view >h4,#view >h5,#view >h6{
+  /*position: relative;*/
+  /*margin-left:10px;*/
+  color: #4bb5e4 ;
+}
+#view blockquote{
+  border-left: 2px solid #009A61;
+  background: #F6F6F6;
+  color: #555;
+  font-size: 1em;
+}
+#view a{
+  color: #009a61;
+  text-decoration: none;
 }
 </style>

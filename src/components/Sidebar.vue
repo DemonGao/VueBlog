@@ -13,7 +13,8 @@
 		      		<router-link :to="{name:'home',params:{tag:'all'}}" :class="{'router-link-active':$route.path.indexOf('home')!=-1||$route.path.indexOf('article')!=-1}">文章</router-link>
 		      	</li>
 		      	<li><router-link to="/sign">标签</router-link></li>
-		      	<li><router-link to="/timeaxis">时间轴</router-link></li>
+		      	<!--<li><router-link to="/timeaxis">时间轴</router-link></li>-->
+            <li><router-link to="/case">作品集</router-link></li>
 		      </ul>
 		    </div>
 	  	</nav>

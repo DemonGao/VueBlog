@@ -6,7 +6,7 @@ const Home = resolve => require(['./../components/Home.vue'], resolve)
 const Sign = resolve => require(['./../components/Sign.vue'], resolve)
 const Article = resolve => require(['./../components/Article.vue'], resolve)
 const TimeAxis = resolve => require(['./../components/TimeAxis.vue'], resolve)
-
+const Case = resolve => require(['./../components/Case.vue'], resolve)
 // import Admin from './../components/Admin/Admin'
 // import Admin_Article from './../components/Admin/article/Article'
 // import Admin_ArticleList from './../components/Admin/article/ArticleList'
@@ -45,6 +45,10 @@ const routes = [
 		path : '/timeaxis',
 		component : TimeAxis
 	},
+  {
+    path : '/case',
+    component : Case
+  },
 
 
 
