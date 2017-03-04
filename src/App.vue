@@ -29,6 +29,7 @@
         </div>
 
         <model></model>
+
     </div>
 </template>
 <script type="text/javascript">
@@ -69,7 +70,8 @@
     },
     data(){
       return {
-        loadding:true
+        loadding:true,
+        model:false,
       }
     },
     created(){

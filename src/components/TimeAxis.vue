@@ -9,7 +9,7 @@
 				<ul class="timeaxis-list">
 					<li class="timeaxis-item">
 						<span>2016-10-26</span>
-						<router-link :to="{name:'article',params:{id:123}}" >JavaScript闭包详解</router-link>
+						<router-link :to="{name:'home',params:{tag:'all'}}" >JavaScript闭包详解</router-link>
 					</li>
 				</ul>
 			</section>

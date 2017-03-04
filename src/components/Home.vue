@@ -25,14 +25,18 @@
           :current-page="currentPage"
           :page-sizes="pageSizes"
           :page-size="pageSize"
-          layout="prev, pager, next, jumper"
+          layout="prev, pager, next"
           :total="total">
           <!--layout="total, sizes, prev, pager, next, jumper"-->
         </el-pagination>
+
+
 		</div>
+
 	</div>
 </template>
 <script type="text/javascript">
+
 	export default{
 		data(){
 			return {
@@ -40,7 +44,9 @@
         pageSizes:[2,4,6],
         pageSize: 2,
         currentPage:1,
-        total:0
+        total:0,
+
+        backtop:false,
 			}
 		},
 		computed:{
@@ -49,7 +55,19 @@
 			}
 		},
 		mounted(){
-      this.ajax()
+//      window.addEventListener('scroll',this.handleScroll)
+      var ua = navigator.userAgent;
+      var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+        isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+        isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+        isMobile = isIphone || isAndroid;
+      //判断
+      if(isMobile) {
+        this.pageSize =10;
+
+
+      }
+      this.ajax();
     },
     methods:{
       handleSizeChange(val) {
@@ -61,6 +79,7 @@
         console.log(`当前页: ${val}`);
         this.currentPage = val;
         this.ajax();
+        document.body.scrollTop = 0;
       },
       ajax(){
         this.axios.get(this.$store.state.serverurl+'api/getArticles',{
@@ -79,11 +98,24 @@
             alert(data.msg);
           }
         })
+      },
+      handleScroll(){
+        var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+
+        console.log(getViewPortHeight());
+        if(scrollTop>getViewPortHeight()){
+          this.backtop = true;
+          console.log(scrollTop);
+        }else{
+          this.backtop = false;
+        }
+        console.log(scrollTop);
       }
     }
 	}
 </script>
-<style type="text/css">
+<style type="text/css" scope="scope">
+
 	.home .panel-heading{
 		padding:10px 30px;
 		background-color: #fff;
@@ -236,4 +268,7 @@
 		-webkit-transition: all .2s ease-in;
 	    transition: all .2s ease-in;
 	}
+  .el-pagination{
+    text-align: center;
+  }
 </style>

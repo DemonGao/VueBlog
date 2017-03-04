@@ -1,12 +1,18 @@
 <template>
 	<div id="sidebar" :class="{'height100':$route.path.indexOf('admin')!=-1}">
-		<!-- 用户PC端导航-->
-		<nav class="panel sidebar sm-hiden" v-if="$route.path.indexOf('admin')==-1">
+      <!-- 用户PC端导航-->
+      <nav class="panel sidebar sm-hiden" v-if="$route.path.indexOf('admin')==-1">
 		    <div class="panel-heading">
 		      <img src="./../assets/logo.jpg" >
 		      <router-link to="/admin_home" tag="h4" class="text-center">DemonGao</router-link>
-		      <span class="text-center writing">全栈工程师</span>
+		      <span class="text-center writing">前端工程师</span>
 		    </div>
+        <aside class="panel-otherUrl">
+          <a href="https://github.com/demongao" target="_blank"><i class="iconfont icon-github"></i></a>
+          <a href="https://segmentfault.com/u/demongao" target="_blank"><i class="iconfont icon-sf"></i></a>
+          <!--<a href="https://www.zhihu.com/people/ruo-shui-you-li-62/activities" target="_blank"><i class="iconfont icon-matuwang-zhihufangxingdianji"></i></a>-->
+          <!--<a href="http://www.jianshu.com/users/b82bf52ac021/timeline" target="_blank"><i class="iconfont icon-jian"></i></a>-->
+        </aside>
 		    <div class="panel-body">
 		      <ul>
 		      	<li>
@@ -28,8 +34,8 @@
 	  		<ul class="mobile-nav">
 	  			<router-link :to="{name:'home',params:{tag:'all'}}" :class="{'router-link-active':$route.path =='/'||$route.path.indexOf('article')!=-1}" tag="li">文章</router-link>
 	  			<router-link to="/sign" tag="li">标签</router-link>
-	  			<router-link to="/timeaxis" tag="li">时间轴</router-link>
-	  			<router-link to="/weather" tag="li">天气预报</router-link>
+	  			<router-link to="/case" tag="li">时间轴</router-link>
+	  			<!--<router-link to="/weather" tag="li">天气预报</router-link>-->
 	  		</ul>
 	  	</nav>
 
@@ -37,8 +43,8 @@
 		<nav class="panel sidebar" v-if="$route.path.indexOf('admin')!=-1">
 		    <div class="panel-heading">
 		      <img src="./../assets/logo.jpg" >
-		      <h4 class="text-center">DemonGao</router-link>
-		      <span class="text-center">全栈工程师</span>
+		      <h4 class="text-center">DemonGao</h4>
+		      <span class="text-center">前端工程师</span>
 		    </div>
 		    <div class="panel-body">
 		      <ul>
@@ -181,6 +187,22 @@
 		-webkit-transform: scaleX(0);
 		transform: scaleX(0)
 	}
+  .panel.sidebar .panel-otherUrl{
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-flow:row nowrap;
+    -webkit-flex-flow: row nowrap;
+    justify-content: space-around;
+    -webkit-justify-content: space-around;
+
+  }
+  .panel.sidebar .panel-otherUrl a{
+
+    text-decoration: none;
+  }
+  .panel.sidebar .panel-otherUrl a i{
+    font-size:20px;
+  }
 	.panel.sidebar .panel-body{
 		padding-left: 0px;
 		padding-right: 0px;

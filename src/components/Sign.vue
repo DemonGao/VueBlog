@@ -31,7 +31,8 @@
     	},
 	}
 </script>
-<style type="text/css" scoped>
+<style type="text/css" scoped="scoped">
+
 	.sign .panel-heading{
 		padding:10px 30px;
 		background-color: #fff;
@@ -43,6 +44,7 @@
 	}
 	.sign .sign-list{
 		list-style: none;
+    padding-left:0;
 	}
 	.sign .sign-list .sign-item{
 		float: left;
@@ -53,4 +55,10 @@
 		border-radius: 4px;
 		cursor:pointer;
 	}
+
+  @media (max-width: 768px) {
+    .sign .panel-body{
+      padding: 5px 15px;
+    }
+  }
 </style>

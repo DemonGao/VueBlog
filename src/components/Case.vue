@@ -5,25 +5,74 @@
     </div>
     <div class="panel-body">
       <section>
+        <h3>2017年</h3>
+        <ul class="timeaxis-list">
+          <li class="timeaxis-item">
+            <span>2月1日</span>
+            <router-link :to="{name:'home',params:{tag:'all'}}" >Vue个人技术博客</router-link>
+          </li>
+        </ul>
         <h3>2016年</h3>
         <ul class="timeaxis-list">
           <li class="timeaxis-item">
-            <span>10月26日 </span>
-            <router-link :to="{name:'article',params:{id:123}}" >JavaScript闭包详解</router-link>
+            <!--<span>6月26日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase3/task6/" target="_blank">日历组件</a>
+          </li>
+          <li class="timeaxis-item">
+            <!--<span>6月24日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase3/task1/" target="_blank">UI组件之浮出层</a>
+          </li>
+          <li class="timeaxis-item">
+            <!--<span>6月20日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase3/task3/" target="_blank">UI组件之冻结行列表格</a>
+          </li>
+          <li class="timeaxis-item">
+            <!--<span>5月18日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase2/task18/" target="_blank">表单（二）多个表单项的动态校验</a>
+          </li>
+          <li class="timeaxis-item">
+            <!--<span>5月17日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase2/task18/" target="_blank">表单（一）单个表单项的检验</a>
+          </li>
+          <li class="timeaxis-item">
+            <!--<span>5月17日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase2/task13/" target="_blank">JavaScript和树（四）</a>
+          </li>
+          <li class="timeaxis-item">
+            <!--<span>5月16日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase2/task12/" target="_blank">JavaScript和树（三）动态展示深度广度遍历搜索(可添加节点)</a>
+          </li>
+          <li class="timeaxis-item">
+            <!--<span>5月15日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase2/task11/" target="_blank">JavaScript和树（二）动态展示深度广度遍历搜索</a>
+          </li>
+          <li class="timeaxis-item">
+            <!--<span>5月14日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase2/task11/" target="_blank">JavaScript和树（一）动态遍历二叉树</a>
           </li>
 
-        </ul>
-        <h3>2015年</h3>
-        <ul class="timeaxis-list">
           <li class="timeaxis-item">
-            <span>10月26日</span>
-            <router-link :to="{name:'article',params:{id:123}}" >前端工程师的自我修养</router-link>
+            <!--<span>5月7日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase1/task7/" target="_blank">新世界 - 单纯设计稿还原</a>
           </li>
           <li class="timeaxis-item">
-            <span>10-26</span>
-            <router-link :to="{name:'article',params:{id:123}}" >UI 组件之照片墙</router-link>
+            <!--<span>5月2日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase2/task9/" target="_blank">JavaScript基础练习(四)</a>
+          </li>
+          <li class="timeaxis-item">
+            <!--<span>4月28日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase2/task8/" target="_blank">JavaScript基础练习(三)</a>
+          </li>
+          <li class="timeaxis-item">
+            <!--<span>4月26日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase2/task7/" target="_blank">JavaScript基础练习(二)</a>
+          </li>
+          <li class="timeaxis-item">
+            <!--<span>4月25日 </span>-->
+            <a href="http://demongao.github.io/IFE_item/2016/phase2/task5/" target="_blank">空气质量数据渲染</a>
           </li>
         </ul>
+
       </section>
     </div>
   </div>

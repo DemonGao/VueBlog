@@ -37,6 +37,7 @@
 			}
 		},
 		mounted(){
+      console.log('model');
 			this.axios.get(this.$store.state.serverurl+'api/getTags').then((response) => {
 	  			var data = response.data;
 	  			if (data.status) {
@@ -201,7 +202,7 @@
 	.dialog-content ul li:hover::before {
 		visibility: visible;
 	}
-	
+
 
 	.dialog-footer .btn{
 		display: block;
