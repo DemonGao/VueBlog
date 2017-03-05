@@ -5,10 +5,10 @@
             <login v-if="islogin"></login>
 
             <div class="row" v-if="!islogin">
-                <div class="row-left col-md-2 col-sm-4">
+                <div class="row-left col-md-2 col-sm-3">
                     <sidebar></sidebar>
                 </div>
-                <div  :class="['row-center','col-sm-8',$route.path.indexOf('admin')==-1?'col-md-7':'col-md-10']">
+                <div  :class="['row-center','col-sm-9',$route.path.indexOf('admin')==-1?'col-md-7':'col-md-10']">
                     <transition
                         v-on:before-enter="beforeEnter"
                         v-on:enter="enter"
@@ -157,11 +157,11 @@
   #wrapper .content .row-center{
     height: 100%;
   }
-  #wrapper .row-center.col-sm-8{
+  #wrapper .row-center.col-sm-9{
     padding-left: 0;
     padding-right:0;
   }
-  #wrapper .row-left.col-sm-4{
+  #wrapper .row-left.col-sm-3{
     padding-left: 0;
     /*padding-right:0;*/
   }
