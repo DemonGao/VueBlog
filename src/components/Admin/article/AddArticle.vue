@@ -28,23 +28,15 @@
 <script type="text/javascript">
   import marked from 'marked'
   import highlight from 'highlight.js'
-  import UploadPic from './../../Util/UploadPic'
   marked.setOptions({
     highlight: function (code) {
       return highlight.highlightAuto(code).value;
     }
   });
   export default{
-    //注册组件
-    components:{
-      //对于自定义标签名，Vue.js 不强制要求遵循 W3C规则 （小写，并且包含一个短杠），尽管遵循这个规则比较好。
-      'uploadPic' : UploadPic
-    },
     data(){
       return {
         input : '',
-        uploadShow:false,
-//        dialogFormVisible:false,
         dialogFormVisible: false,
         imageUrl: ''
       }
@@ -94,17 +86,10 @@
         this.axios.post(this.$store.state.serverurl+'profile',data)
           .then((response)=>{
             console.log(response.data)
-            this.input = `![图片描述](${response.data.result.path})`
+            this.input += `![图片描述](${response.data.result.path})`
             this.dialogFormVisible = false;
           })
           .catch(e=>{console.log(e)})
-      },
-      openUppic(){
-        this.uploadShow = true;
-
-      },
-      closeUppic(){
-        this.uploadShow = false;
       },
       update(e) {
         this.input = e.target.value
@@ -150,12 +135,8 @@
   }
 
 </script>
-<style type="text/css" scoped="scoped">
+<style type="text/css" scopep="scoped">
 
-  .uploadpic .closebtn{
-    float: right;
-    cursor: pointer;
-  }
   .editor{
     /*background-color: #F7FED8;*/
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -294,41 +275,17 @@
     /*margin-left:10px;*/
     color: #4bb5e4 ;
   }
-  #view blockquote{
-    border-left: 2px solid #009A61;
-    background: #F6F6F6;
-    color: #555;
-    font-size: 1em;
+  #view img{
+    max-width: 100%;
   }
   #view a{
     color: #009a61;
     text-decoration: none;
   }
-
-
-
-
-  .avatar-uploader .el-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .avatar-uploader .el-upload:hover {
-    border-color: #20a0ff;
-  }
-  .avatar-uploader-icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
-    text-align: center;
-  }
-  .avatar {
-    width: 178px;
-    height: 178px;
-    display: block;
+  #view blockquote {
+    border-left: 2px solid #009A61;
+    background: #F6F6F6;
+    color: #555;
+    font-size: 1em;
   }
 </style>

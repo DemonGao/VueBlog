@@ -111,6 +111,7 @@ export default{
     /*margin-left:10px;*/
     color: #4bb5e4 ;
   }
+
   .article-content blockquote{
     border-left: 2px solid #009A61;
     background: #F6F6F6;
@@ -120,5 +121,8 @@ export default{
   .article-content a,.article-detail-meta a{
     color: #009a61;
     text-decoration: none;
+  }
+  .article-content img{
+    max-width: 100%;
   }
 </style>

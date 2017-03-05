@@ -197,6 +197,9 @@
 		font-size: 20px;
 		background-color: #FFF;
 	}
+  .home-list .home-item .home-item-content img{
+    max-width:100%;
+  }
 	.home-item-footer{
 		position: relative;
 		padding-top: 10px;
