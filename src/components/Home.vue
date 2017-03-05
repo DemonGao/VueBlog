@@ -5,6 +5,7 @@
 		</div> -->
 
 		<div class="panel-body">
+
 			<ul class="home-list">
 				<li v-for="item in orderedArticles" class="home-item">
 					<h1>{{item.title}}<span>{{new Date(item.date).Format("YYYY-MM-DD")}}</span></h1>
@@ -31,11 +32,13 @@
         </el-pagination>
 
 
+
 		</div>
 
 	</div>
 </template>
 <script type="text/javascript">
+
 
 	export default{
 		data(){
@@ -45,8 +48,6 @@
         pageSize: 2,
         currentPage:1,
         total:0,
-
-        backtop:false,
 			}
 		},
 		computed:{
@@ -79,7 +80,7 @@
         console.log(`当前页: ${val}`);
         this.currentPage = val;
         this.ajax();
-        document.body.scrollTop = 0;
+        this.goTop();
       },
       ajax(){
         this.axios.get(this.$store.state.serverurl+'api/getArticles',{
@@ -99,18 +100,34 @@
           }
         })
       },
-      handleScroll(){
-        var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+      goTop(){
+        console.log(123)
+        var timer = setInterval(function(){
+          //获取滚动条距离顶部高度
+          var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop ;
+          var ispeed = Math.floor(-scrollTop / 7);
 
-        console.log(getViewPortHeight());
-        if(scrollTop>getViewPortHeight()){
-          this.backtop = true;
-          console.log(scrollTop);
-        }else{
-          this.backtop = false;
-        }
-        console.log(scrollTop);
+          document.documentElement.scrollTop = document.body.scrollTop =window.pageYOffset = scrollTop+ispeed;
+          //到达顶部，清除定时器
+          if (scrollTop == 0) {
+            clearInterval(timer);
+          };
+//        isTop = true;
+
+        },30);
       }
+//      handleScroll(){
+//        var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+//
+//        console.log(getViewPortHeight());
+//        if(scrollTop>getViewPortHeight()){
+//          this.backtop = true;
+//          console.log(scrollTop);
+//        }else{
+//          this.backtop = false;
+//        }
+//        console.log(scrollTop);
+//      }
     }
 	}
 </script>

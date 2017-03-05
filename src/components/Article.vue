@@ -12,7 +12,7 @@
         <i class="iconfont icon-liulan"></i>阅读: {{data.view}}
       </span>
       <span class="article-detail-meta">
-        <i class="iconfont icon-zuozhe"></i>作者: DemonGao(高世超)
+        <i class="iconfont icon-zuozhe"></i>作者: Demon
       </span>
       <span class="article-detail-meta">
         <i class="iconfont icon-biaoqian"></i>分类: <router-link :to="{name:'home',params:{tag:data.tag}}" class="sign-item">{{data.tag}}</router-link>
@@ -92,7 +92,7 @@ export default{
     padding:15px 20px;
   }
   .article-detail .article-detail-meta{
-    margin-right:20px;
+    margin-right:15px;
   }
   .article-detail .article-detail-meta:last-child{
     margin-right: 0;

@@ -140,5 +140,15 @@ function $$(selector, context){
 
  // 获取浏览器窗口垂直滚动条的位置
  function getScrollTop() {
-       return document.documentElement.scrollTop || document.body.scrollTop;
+       return document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
    }
+
+function setScrollTop(value){
+  if(document.documentElement.scrollTop ){
+    document.documentElement.scrollTop = value;
+  }else if(window.pageYOffset){
+    window.pageYOffset = value;
+  }else{
+    document.body.scrollTop = value;
+  }
+}

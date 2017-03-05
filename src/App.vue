@@ -27,9 +27,8 @@
                 </div>
             </div>
         </div>
-
         <model></model>
-
+      <backtop></backtop>
     </div>
 </template>
 <script type="text/javascript">
@@ -37,6 +36,7 @@
   import WeatherForecast from './components/WeatherForecast'
   import Login from './components/Login'
   import Model from './components/Util/Model'
+  import BackTop from './components/Util/BackTop.vue'
   export default{
     filters:{
       showlogin(){
@@ -49,7 +49,8 @@
       'sidebar':Sidebar,
       'weatherForecast':WeatherForecast,
       'login':Login,
-      'model' : Model
+      'model' : Model,
+      'backtop':BackTop
     },
 
     computed:{
@@ -81,6 +82,8 @@
 
       // console.log(document.getElementById("wrapper_content").clientHeight+'px');
       document.getElementById("wrapper").style.height = document.body.offsetHeight+'px';
+
+
     },
     methods:{
       // 过渡进入
