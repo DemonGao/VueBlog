@@ -18,31 +18,51 @@
         <i class="iconfont icon-biaoqian"></i>分类: <router-link :to="{name:'home',params:{tag:data.tag}}" class="sign-item">{{data.tag}}</router-link>
       </span>
     </div>
-    <div class="clearfix">
-      <div class="bdsharebuttonbox" data-tag="share_1" style="float:right">
-        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-        <!--<a class="bds_mshare" data-cmd="mshare"></a>-->
-        <a class="bds_qzone" data-cmd="qzone" href="#"></a>
-        <a class="bds_tsina" data-cmd="tsina"></a>
-        <a class="bds_renren" data-cmd="renren"></a>
-        <a class="bds_more" data-cmd="more">更多</a>
-        <a class="bds_count" data-cmd="count"></a>
+    <a-player :music="songs" ref="player"></a-player>
+    <!--<div class="clearfix">-->
+      <!--<div class="bdsharebuttonbox" data-tag="share_1" style="float:right">-->
+        <!--<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>-->
+        <!--&lt;!&ndash;<a class="bds_mshare" data-cmd="mshare"></a>&ndash;&gt;-->
+        <!--<a class="bds_qzone" data-cmd="qzone" href="#"></a>-->
+        <!--<a class="bds_tsina" data-cmd="tsina"></a>-->
+        <!--<a class="bds_renren" data-cmd="renren"></a>-->
+        <!--<a class="bds_more" data-cmd="more">更多</a>-->
+        <!--<a class="bds_count" data-cmd="count"></a>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="article-content" >
+      <div v-html="data.content"></div>
+      <p class="article-content-footer">
+        <p>更多内容可以订阅本人微信公众号，一起开启前端小白进阶的世界！</p>
+        <img src="./../../static/img/wx.jpg" >
       </div>
-    </div>
-
-    <div class="article-content" v-html="data.content">
-
 		</div>
 	</div>
 </template>
 <script type="text/javascript">
+  import VueAplayer from 'vue-aplayer'
 export default{
+    components: {
+      'a-player': VueAplayer
+    },
 		data(){
 			return {
-				data:{}
+				data:{},
+        songs: [
+          {
+            title: 'Preparation',
+            author: 'Hans Zimmer/Richard Harvey',
+            url: 'http://devtest.qiniudn.com/Preparation.mp3',
+            pic: 'http://devtest.qiniudn.com/Preparation.jpg',
+            lrc: '[00:00.00]lrc here\n[00:01.00]aplayer'
+          }
+        ]
 			}
 		},
 		mounted(){
+      let aplayer = this.$refs.player.control;
+      aplayer.play()
 		  //获取文章内容
 			this.axios.get(this.$store.state.serverurl+'api/getArticle',{
 					params:{
@@ -124,5 +144,18 @@ export default{
   }
   .article-content img{
     max-width: 100%;
+  }
+  .article-content-footer{
+    border-top:1px solid #ccc;
+  }
+  .article-content-footer img{
+    max-width: 100%;
+  }
+
+  .aplayer{
+    margin-bottom: 1.5rem !important;
+  }
+  .aplayer-list,.aplayer-icon-menu{
+    display: none !important;
   }
 </style>
