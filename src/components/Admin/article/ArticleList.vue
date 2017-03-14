@@ -84,14 +84,14 @@
     methods: {
       handleEdit(index, row) {
       	if (typeof(row)!="undefined") {
-      		this.$router.push('/admin_articles/edit/'+row._id);
+      		this.$router.push('/admin/article/edit/'+row._id);
       	}else{
-      		this.$router.push('/admin_articles/add');
+      		this.$router.push('/admin/article/add');
       	}
 
       },
       handleDelete(index, row) {
-        console.log(index, row);
+//        console.log(index, row);
         this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -101,7 +101,7 @@
             _id:row._id,
           }).then((response) => {
             var data = response.data;
-            console.log(data);
+//            console.log(data);
             if(data.status){
               this.tableData.splice(index,1);
               this.$message({
@@ -124,12 +124,12 @@
         });
       },
       handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
+//        console.log(`每页 ${val} 条`);
         this.pageSize = val;
         this.ajax();
       },
       handleCurrentChange(val) {
-        console.log(`当前页: ${val}`);
+//        console.log(`当前页: ${val}`);
         this.currentPage = val;
         this.ajax();
       },
@@ -176,7 +176,7 @@
 </script>
 <style type="text/css" scoped="scoped">
   .article-content{
-    padding:0 40px 0 20px;
+    padding:0 20px 0 20px;
   }
     .btnteam{
       padding:20px 0;

@@ -8,17 +8,24 @@ import VueAxios from 'vue-axios'
 /*管理全局变量*/
 import store from './store'				//vuex
 
+import './assets/css/style.css'   //引入个人样式库
+import './assets/js/ripple.js'
 //引入element ui库
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 
 import App from './App'
 import routes from './routes'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './assets/monokai-sublime.css'
-//引入
+
+import './assets/css/monokai-sublime.css'   //markdown 代码块样式
+import './assets/css/slide3D-1.2.1.min.css'
+
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+
+import 'animate.css'    //引入 Animate.css 动画库
+
+import './assets/js/Utils.js'     //功能
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
@@ -34,7 +41,7 @@ const router = new VueRouter({
 // })
 // 简单配置
 NProgress.inc(0.2)
-NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
+NProgress.configure({ easing: 'ease', speed: 1000, showSpinner: true })
 
 
 router.beforeEach((to,from,next) => {

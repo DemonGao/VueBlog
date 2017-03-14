@@ -157,12 +157,12 @@ Date.prototype.Format = function (formatStr) {
   return str;
 }
 
-function $$(selector, context) {
-  context = context || document;
-  var elements = context.querySelectorAll(selector);
-
-  return Array.prototype.slice.call(elements);
-}
+// function $$(selector, context) {
+//   context = context || document;
+//   var elements = context.querySelectorAll(selector);
+//
+//   return Array.prototype.slice.call(elements);
+// }
 
 
 // 获取浏览器窗口的可视区域的宽度

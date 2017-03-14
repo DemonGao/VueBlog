@@ -12,10 +12,10 @@
       </div>
     </div>
 	  <div class="editor-content clearfix">
-      <div id="write" class="col-xs-6 write">
+      <div id="write" class="write">
         <textarea  :value="input" @input="update"></textarea>
       </div>
-      <div id="view" class="col-xs-6 view" v-html="compiledMarkdown"></div>
+      <div id="view" class="view" v-html="compiledMarkdown"></div>
     </div>
 
 
@@ -98,10 +98,10 @@
         var data= new FormData();
         data.append("avatar", filenode.files[0]);
 
-        console.log(filenode.files[0])
+//        console.log(filenode.files[0])
         this.axios.post(this.$store.state.serverurl+'profile',data)
           .then((response)=>{
-            console.log(response.data)
+//            console.log(response.data)
             this.input += `![图片描述](${response.data.result.path})`
             this.dialogFormVisible = false;
           })
@@ -172,7 +172,7 @@
             }
             this.$store.dispatch('update_article',obj)
 
-            console.log(this.$store.state.article);
+//            console.log(this.$store.state.article);
           }else{
             // alert(data.tableData);
           }
@@ -180,8 +180,8 @@
     },
 	}
 </script>
-<style type="text/css" scoped>
- /*@import './../../../assets/monokai-sublime.css';*/
+<style type="text/css" scopep="scoped">
+
 .editor{
   /*background-color: #F7FED8;*/
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -271,6 +271,12 @@
   color: #FDFFE7;
   text-decoration: none;
 }
+ .editor .editor-content .write,.editor .editor-content .view{
+   width:50%;
+   padding: 20px;
+   display: inline-block;
+   float: left;
+ }
 .editor .editor-content .write{
   height: 100%;
   padding-right: 0;
@@ -287,7 +293,7 @@
 .editor .editor-content .view{
   vertical-align: top;
   box-sizing: border-box;
-  /*padding: 20px 20px 0;*/
+
   overflow-y:auto;
   overflow-x:hidden;
 }

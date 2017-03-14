@@ -2,7 +2,7 @@
   <div id="addArticle" class="editor">
     <div class="editor-title">
       <input type="text" placeholder="请输入文章标题" @input="updateTitle"/>
-      <a href="#" @click="showModel">发表博客</a>
+      <a href="javascript:;" @click="showModel">发表博客</a>
     </div>
     <div class="editor-util">
       <div class="editor-util-item" @click="dialogFormVisible =true">
@@ -10,10 +10,10 @@
       </div>
     </div>
     <div class="editor-content clearfix">
-      <div id="write" class="col-xs-6 write">
+      <div id="write" class="write">
         <textarea  :value="input" @input="update"></textarea>
       </div>
-      <div id="view" class="col-xs-6 view" v-html="compiledMarkdown"></div>
+      <div id="view" class="view" v-html="compiledMarkdown"></div>
     </div>
 
     <el-dialog title="上传图片" v-model="dialogFormVisible">
@@ -82,10 +82,10 @@
           var data= new FormData();
           data.append("avatar", filenode.files[0]);
 
-          console.log(filenode.files[0])
+//          console.log(filenode.files[0])
         this.axios.post(this.$store.state.serverurl+'profile',data)
           .then((response)=>{
-            console.log(response.data)
+//            console.log(response.data)
             this.input += `![图片描述](${response.data.result.path})`
             this.dialogFormVisible = false;
           })
@@ -104,7 +104,7 @@
           val:this.input
         }
         this.$store.dispatch('update_article',obj)
-        console.log(this.$store.state.article);
+//        console.log(this.$store.state.article);
       },
       showModel(){
         this.$store.dispatch('addarticle_toggle_modal')
@@ -196,6 +196,7 @@
     margin-top: -120px;
     padding-top: 120px;
     /*padding-bottom: 150px;*/
+    padding:120px 2px 0;
   }
   .editor-footer{
     height: 150px;
@@ -226,6 +227,12 @@
     color: #FDFFE7;
     text-decoration: none;
   }
+  .editor .editor-content .write,.editor .editor-content .view{
+    width:50%;
+    padding: 20px;
+    display: inline-block;
+    float: left;
+  }
   .editor .editor-content .write{
     height: 100%;
     padding-right: 0;
@@ -242,18 +249,9 @@
   .editor .editor-content .view{
     vertical-align: top;
     box-sizing: border-box;
-    /*padding: 20px 20px 0;*/
+
     overflow-y:auto;
     overflow-x:hidden;
-  }
-  textarea, .editor .editor-content .view {
-    /*display: inline-block;
-    width: 49%;
-    vertical-align: top;
-    box-sizing: border-box;
-    padding: 20px 20px 0;
-    overflow-y:auto;
-    overflow-x:hidden;*/
   }
 
   textarea {

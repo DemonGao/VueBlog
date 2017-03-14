@@ -52,7 +52,7 @@
         </el-table-column>
       </el-table>
     </div>
-    
+
     <!-- <div class="block">
       <span class="demonstration"></span>
         <el-pagination
@@ -123,7 +123,7 @@
           this.$message({
             type: 'info',
             message: '取消输入'
-          });       
+          });
         });
       },
       handleDelete(index, row) {
@@ -156,21 +156,21 @@
           this.$message({
             type: 'info',
             message: '已取消删除'
-          });          
+          });
         });
       },
       handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
+//        console.log(`每页 ${val} 条`);
       },
       handleCurrentChange(val) {
         this.currentPage = val;
-        console.log(`当前页: ${val}`);
+//        console.log(`当前页: ${val}`);
       }
     },
     mounted(){
       this.axios.get(this.$store.state.serverurl+'api/getTags').then((response) => {
           var data = response.data;
-          console.log(data);
+//          console.log(data);
           this.loading=false;
           if (data.status) {
             this.tableData = data.data;
@@ -179,7 +179,7 @@
           }
       })
 
-      
+
     },
   }
 </script>
@@ -195,6 +195,7 @@
     border-bottom: 10px solid #f5f5f5;
   }
   .adminsign-content{
+    min-height: 100%;
     padding: 0 20px;
   }
     .btnteam{

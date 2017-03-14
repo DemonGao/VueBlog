@@ -78,6 +78,11 @@
   </div>
 </template>
 <style type="text/css" scoped>
+  .timeaxis{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
   .timeaxis .panel-heading{
     padding:10px 30px;
     background-color: #fff;
@@ -85,7 +90,12 @@
   }
   .timeaxis .panel-heading h3{margin-top: 10px;}
   .timeaxis .panel-body{
+    min-height: -moz-calc(100% - 59px);
+    min-height: -webkit-calc(100% - 59px);
+    min-height: calc(100% - 59px);
     padding: 10px 20px;
+
+    background-color: #ffffff;
   }
   .timeaxis .panel-body section{
     position: relative;
