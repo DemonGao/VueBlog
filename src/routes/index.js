@@ -100,35 +100,5 @@ const routes = [
       }
     ]
   },
-
-  //
-  // {
-  // 	path : '/admin_articles',
-  // 	component : Admin_Article,
-  // 	children: [
-  // 	  {
-  //    path: '',
-  //    component: Admin_ArticleList
-  //  },
-  //  {
-  //    path: 'add',
-  //    component: Admin_AddArticle
-  //  },
-  //  {
-  //    path: 'edit/:id',
-  //    name: 'edit',
-  //    component: Admin_EditArticle
-  //  }
-  // ]
-  // },
-  // {
-  // 	path : '/admin_addarticle',
-  // 	component: Admin_AddArticle
-  // },
-  // {
-  // 	path : '/admin_sign',
-  // 	component : Admin_Sign
-  // }
-
 ];
 export default routes;

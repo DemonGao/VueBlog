@@ -1,9 +1,24 @@
 <template>
-  <transition name="backtop">
-  <div class="backtop" v-if="isshow" @click="goTop">
-    <i class="iconfont icon-huidaodingbu"></i>
+  <div class="backtop">
+    <div class="backtop-sub wx">
+      <i class="iconfont icon-weixin"></i>
+      <span class="word">公众账号</span>
+      <div class="ggzh">
+        <em>
+          扫描二维码关注 前端Demon
+          <br>
+          公众账号
+        </em>
+      </div>
+    </div>
+    <transition name="backtop">
+      <div class="backtop-sub gotop" v-show="isshow" @click="goTop">
+        <i class="iconfont icon-huidaodingbu"></i>
+        <span class="word">返回顶部</span>
+      </div>
+    </transition>
   </div>
-  </transition>
+
 </template>
 
 <script>
@@ -87,17 +102,22 @@ export default{
 <style scoped="scoped">
   .backtop{
     position: fixed;
-    bottom: 4rem;
-    right: 3rem;;
-    width:5rem;
-    height:5rem;
+    bottom: 10rem;
+    right: 1.7rem;
+    width: 4rem;
+    height: 8.1rem;;
     /*background-color: green;*/
     text-align: center;
     z-index:999999;
+
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    /*overflow: hidden;*/
   }
 
   .backtop-enter-active {
-    transition: all .3s ease;
+    transition: all .5s ease;
   }
   .backtop-leave-active {
     transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
@@ -106,29 +126,92 @@ export default{
     transform: translateX(20px);
     opacity: 0;
   }
-  .backtop i.iconfont{
-    color:#70ACB1;
-    font-size:4rem;
-    -webkit-transition: .5s all;
-    -moz-transition: .5s all;
-    -ms-transition: .5s all;
-    -o-transition: .5s all;
-    transition: .5s all;
+  .backtop-sub{
+    width: 4rem;
+    height:4rem;
+    background-color: #70ACB1;
+    /*background-color: #C6F1E7;*/
+    position: relative;
   }
-  .backtop i.iconfont:hover{
+  .backtop-sub:hover{
+    background-color: #59606D;
+  }
+  .backtop-sub.gotop{
+    position:absolute;
+    top:4.1rem;
+    left:0;
+    z-index:999999999;
+  }
+  .backtop-sub:hover .iconfont{
+
+    opacity: 0;
+  }
+  .backtop-sub .word{
+    position: absolute;
+    top:0;
+    left:calc(50% - 1em);
+    opacity: 0;
+    display: block;
+    width:2em;
+    line-height: 2rem;
+    height:4rem;
+
+    color:#ffffff;
+  }
+  .backtop-sub:hover .word{
+    opacity: 1;
+  }
+  .backtop-sub i.iconfont{
+    display: inline-block;
+    width:4rem;
+    height:4rem;
+    color:#dfdfdf;
+    font-size:3.5rem;
+  }
+  .backtop-sub.gotop,.backtop-sub .word,.backtop-sub i.iconfont,.backtop-sub i.iconfont:hover{
     cursor: pointer;
-    font-size:5rem;
-    -webkit-transition: .5s all;
-    -moz-transition: .5s all;
-    -ms-transition: .5s all;
-    -o-transition: .5s all;
-    transition: .5s all;
+    -webkit-transition: .4s all;
+    -moz-transition: .4s all;
+    -ms-transition: .4s all;
+    -o-transition: .4s all;
+    transition: .4s all;
   }
 
+  /*公共账号 样式*/
+  .backtop-sub.wx .ggzh{
+    position: absolute;
+    top:-16rem;
+    left: -16rem;
+    width: 16rem;
+    height: 20rem;
 
+    background: #fff url(./../../assets/img/wx.jpg) no-repeat 50% 0;
+    background-size: 16.5rem;
+    padding-top: 16.5rem;;
+    opacity: 0;
+    box-shadow: -2px 0 3px 3px rgba(0, 0, 0, .1);
+    -webkit-transform: scale(0);
+    -webkit-transform-origin: 100% 70%;
+    -moz-transform-origin: 100% 70%;
+    transform-origin: 100% 70%;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+  }
+  .backtop-sub.wx:hover .ggzh{
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -webkit-transform-origin: 100% 70%;
+    -moz-transform-origin: 100% 70%;
+    transform-origin: 100% 70%;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+  }
   @media (max-width: 800px) {
     .backtop{
       right: 0rem;;
+    }
+    .backtop-sub.wx{
+      display: none;
     }
   }
 </style>

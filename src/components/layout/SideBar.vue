@@ -22,7 +22,7 @@
       <aside class="panel-otherUrl">
         <a href="https://juejin.im/user/582a61fc0ce463006cd1350c" target="_blank"><img class="juejin" src="../../assets/img/juejin.png"/></a>
         <a href="https://github.com/demongao" target="_blank"><i class="iconfont icon-github github"></i></a>
-        <a href="https://segmentfault.com/u/demongao" target="_blank"><i class="iconfont icon-weixin wx"></i></a>
+        <!--<a href="https://segmentfault.com/u/demongao" target="_blank"><i class="iconfont icon-weixin wx"></i></a>-->
         <a href="http://www.jianshu.com/u/b82bf52ac021" target="_blank"><i class="iconfont icon-jian"></i></a>
         <a href="https://segmentfault.com/u/demongao" target="_blank"><i class="iconfont icon-sf sf"></i></a>
 
