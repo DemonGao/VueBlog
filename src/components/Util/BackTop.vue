@@ -1,7 +1,7 @@
 <template>
   <div class="backtop">
     <div class="backtop-sub wx">
-      <i class="iconfont icon-weixin"></i>
+      <i class="iconfont icon-wx"></i>
       <span class="word">公众账号</span>
       <div class="ggzh">
         <em>
@@ -71,7 +71,7 @@ export default{
     handleScroll(){
       var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
       var clientWidth = document.documentElement.clientWidth || document.body.clientWidth
-      if(scrollTop>0){
+      if(scrollTop>300){
         this.isshow = true;
       }else{
         this.isshow = false;
@@ -79,36 +79,37 @@ export default{
 
     },
     goTop(){
-      this.timer = setInterval(()=>{
-        //设置回滚状态
-        this.backing = true;
-        //获取滚动条距离顶部高度
-        var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop ;
-        var ispeed = Math.floor(-scrollTop / 10);
-
-        document.documentElement.scrollTop = document.body.scrollTop =window.pageYOffset = scrollTop+ispeed;
-        //到达顶部，清除定时器
-        if (scrollTop == 0) {
-          clearInterval(this.timer);
-
-        };
-
-      },30);
+      document.documentElement.scrollTop = document.body.scrollTop =window.pageYOffset = 0;
+//      this.timer = setInterval(()=>{
+//        //设置回滚状态
+//        this.backing = true;
+//        //获取滚动条距离顶部高度
+//        var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop ;
+//        var ispeed = Math.floor(-scrollTop / 10);
+//
+//        document.documentElement.scrollTop = document.body.scrollTop =window.pageYOffset = scrollTop+ispeed;
+//        //到达顶部，清除定时器
+//        if (scrollTop == 0) {
+//          clearInterval(this.timer);
+//
+//        };
+//
+//      },30);
     }
   }
 }
 </script>
 
-<style scoped="scoped">
+<style type="text/css" scoped="scoped">
   .backtop{
     position: fixed;
-    bottom: 10rem;
+    bottom: 3rem;
     right: 1.7rem;
     width: 4rem;
     height: 8.1rem;;
     /*background-color: green;*/
     text-align: center;
-    z-index:999999;
+    z-index:99;
 
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
@@ -129,12 +130,16 @@ export default{
   .backtop-sub{
     width: 4rem;
     height:4rem;
+    line-height:4rem;
     background-color: #70ACB1;
     /*background-color: #C6F1E7;*/
     position: relative;
+
+    opacity: .5;
   }
   .backtop-sub:hover{
     background-color: #59606D;
+    opacity: 1;
   }
   .backtop-sub.gotop{
     position:absolute;
@@ -166,7 +171,9 @@ export default{
     width:4rem;
     height:4rem;
     color:#dfdfdf;
-    font-size:3.5rem;
+    font-size:3rem;
+    /*line-height: 4rem;;*/
+
   }
   .backtop-sub.gotop,.backtop-sub .word,.backtop-sub i.iconfont,.backtop-sub i.iconfont:hover{
     cursor: pointer;

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="article_container">
     <div class="loading" v-show="loading">
       <i></i>
       <i></i>
@@ -10,7 +10,6 @@
     <div class="article" v-show="!loading">
       <h1 class="article-head clearfix">
         {{data.title}}
-        <!--<span class="article-date">{{new Date(data.date).Format("YYYY-MM-DD")}}</span>-->
       </h1>
       <div class="article-detail">
         <span class="article-detail-meta">
@@ -26,39 +25,47 @@
           <i class="iconfont icon-biaoqian"></i>分类: <router-link :to="{name:'home',params:{tag:data.tag}}" class="sign-item">{{data.tag}}</router-link>
         </span>
       </div>
-
+      <!--音乐播放器组件-->
       <a-player :music="songs" ref="player"></a-player>
-      <!--<div class="clearfix">-->
-      <!--<div class="bdsharebuttonbox" data-tag="share_1" style="float:right">-->
-      <!--<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>-->
-      <!--&lt;!&ndash;<a class="bds_mshare" data-cmd="mshare"></a>&ndash;&gt;-->
-      <!--<a class="bds_qzone" data-cmd="qzone" href="#"></a>-->
-      <!--<a class="bds_tsina" data-cmd="tsina"></a>-->
-      <!--<a class="bds_renren" data-cmd="renren"></a>-->
-      <!--<a class="bds_more" data-cmd="more">更多</a>-->
-      <!--<a class="bds_count" data-cmd="count"></a>-->
-      <!--</div>-->
-      <!--</div>-->
-
+      <!--文章内容-->
       <div class="article-content" >
         <div v-html="data.content"></div>
-        <p class="article-content-footer">
-        <p>更多内容可以订阅本人微信公众号，一起开启前端小白进阶的世界！</p>
-        <img src="./../assets/img/wx.jpg" />
+        <!--<p class="article-content-footer">-->
+        <!--<p>更多内容可以订阅本人微信公众号，一起开启前端小白进阶的世界！</p>-->
+        <!--<img src="./../assets/img/wx.jpg" />-->
+      <!--</div>-->
+
+        <div id="duoshuo"></div>
+        <div v-html="share"></div>
       </div>
-
-
-      <div v-html="share"></div>
-      <div v-html="duoshuo"></div>
     </div>
-
   </div>
 </template>
 <script type="text/javascript">
   import VueAplayer from 'vue-aplayer'
+
   export default{
     components: {
-      'a-player': VueAplayer
+      'a-player': VueAplayer,
+//      'remote-js': {
+//        render(createElement) {
+//          return createElement('div',{},[
+//            createElement('div',{
+//              attrs:{
+//                class:'ds-thread',
+//                'data-thread-key':'58c80779ef4ec808ab2230c0',
+//                'data-title':'CDN加速你的网站',
+//                'data-url':'http://demongao.com/article/58c80779ef4ec808ab2230c0'
+//              }
+//            })
+//            ,createElement('script', {attrs: {type: 'text/javascript'}},['var duoshuoQuery = {short_name:"demongao"};']),
+//            ,createElement('script', {attrs: {type: 'text/javascript', src: this.src}}),
+//          ]);
+//        },
+//        props: {
+//          src: { type: String, required: true },
+//        },
+//      }
     },
     data(){
       return {
@@ -77,22 +84,59 @@
         share:''
       }
     },
+    watch: {
+      '$route' (to, from) {
+        // 对路由变化作出响应...
+        console.log(to.params.id);
+        this.ajax();
+      }
+    },
     mounted(){
-
+      this.toggleDuoshuoComments();
       let aplayer = this.$refs.player.control;
-//      aplayer.play()
-      //获取文章内容
-      this.axios.get(this.$store.state.serverurl+'api/getArticle',{
-        params:{
-          id:this.$route.params.id,
-        }
-      }).then((response) => {
-        var data = response.data;
-        if (data.status) {
-          this.data = data.data;
-          this.duoshuo =`<div  class="ds-thread" data-thread-key="${this.$route.path.split('/')[2]}" data-title="${this.data.title}" data-url="http://demongao.com${this.$route.path}"></div>
-`;
-//          this.share = `
+      this.ajax();
+
+//      var arr = document.getElementsByTagName("pre");
+//      console.log(arr[0].innerHTML)
+//      for(let i=0;i<arr.length;i++){
+//        console.log(arr[i].innerHTML)
+//      }
+//      _.forEach(arr,function(val){
+//        console.log(val);
+////        .innerHTML.split("\n")
+//      })
+//      console.log(arr);
+//      var text = "<ol>";
+//      $.each(arr,function(i,item){
+//        if(item.trim()!=""){
+//          text += "<li>"+ item +"</li>";
+//        }
+//        text += "</ol>"
+//        $("pre").html(text);
+//      });
+    },
+    methods:{
+      //多说加载评论框
+      toggleDuoshuoComments:function () {
+        var el = document.createElement('div');//该div不需要设置class="ds-thread"
+        el.setAttribute('data-thread-key', this.$route.path.split('/')[2]);//必选参数
+        el.setAttribute('data-url', 'http://demongao.com'+this.$route.path);//必选参数
+        DUOSHUO.EmbedThread(el);
+        document.getElementById("duoshuo").appendChild(el);
+      },
+      ajax(){
+        //获取文章内容
+        this.axios.get(this.$store.state.serverurl+'api/getArticle',{
+          params:{
+            id:this.$route.params.id,
+          }
+        }).then((response) => {
+          var data = response.data;
+          if (data.status) {
+            this.data = data.data;
+            localStorage.setItem("demongao_bdText",this.data.title)
+            this.loading = false;
+//            this.share = `
 //            <div class="ds-share flat"
 //              data-thread-key="${this.$route.path.split('/')[2]}"
 //              data-title="${this.data.title}"
@@ -111,58 +155,73 @@
 //          </div>
 //        </div>
 //      </div>`
+            var str = this.data.content;
+//            console.log(str);
+            let preArr = str.match(/<(pre)>[\s\S]*?<\/pre>/g);
+//            console.log(preArr);
+            if(preArr ==null){
+              return ;
+            }
+////            遍历正则匹配到的<pre></pre>标签组
+//            for(let i=0; i<preArr.length;i++){
+//              var newpresub = preArr[i].slice(11,-13).replace(/([\s\S]*?\n)/g,'<li>$1</li>')
+//              preArr[i] = '<pre><code><ol>'+newpresub+'</ol></code></pre>';
+//              str = str.replace(/<(pre)><(code)>[\s\S]*?<\/code><\/pre>/g,preArr[i])
+//            }
+//            this.data.content = str;
 
-          localStorage.setItem("demongao_bdText",this.data.title)
+//            生成 span 标签行
+            for(let i=0; i<preArr.length;i++){
+              var index = 0;
+              var newpresub = preArr[i].slice(11,-13).replace(/([\s\S]*?\n)/g,function(){
+//                console.log(arguments);
 
-//          setTimeout(()=>{
-//
-//            this.loading = false;
-//          },600)
-          this.loading = false;
-        }else{
-          console.log(data.msg);
-        }
-      })
-      //浏览量+1
-      this.axios.post(this.$store.state.serverurl+'api/viewArticle',{id:this.$route.params.id})
-
-
-
+                console.log(index)
+                index++;
+                var strindex = index>9 ? index : '0'+index
+                return `<em class="demon_code_index">${strindex}</em>${arguments[1]}` ;
+              })
+              console.log('----------------------------');
+              preArr[i] = `<pre><code class="demon_code">${newpresub}</code></pre>`;
+              str = str.replace(/<(pre)><(code)>[\s\S]*?<\/code><\/pre>/g,preArr[i])
+            }
+            this.data.content = str;
+          }else{
+            console.log(data.msg);
+          }
+        })
+        //浏览量+1
+        this.axios.post(this.$store.state.serverurl+'api/viewArticle',{id:this.$route.params.id})
+      }
     }
   }
-
 </script>
-<style type="text/css" scopep="scoped">
-  .container{
+<style type="text/css">
+  .article_container{
     height:100%;
   }
-  .container .loading{
+  .article_container .loading{
 
   }
-  .article{
+  .article_container .article{
     border-radius: 5px;
     padding: 25px;
     background-color:#fff;
   }
-  .article-head{
+  .article_container .article-head{
     font-size:36px;
     margin:0;
   }
-  .article-date{
-    float: right;
-    font-size: 12px;
-    line-height: 39px
-  }
-  .article-detail{
+  .article_container .article-detail{
     padding:15px 20px;
   }
-  .article-detail .article-detail-meta{
+  .article_container .article-detail .article-detail-meta{
     margin-right:15px;
   }
-  .article-detail .article-detail-meta:last-child{
+  .article_container .article-detail .article-detail-meta:last-child{
     margin-right: 0;
   }
-  .article-detail .article-detail-meta i{
+  .article_container .article-detail .article-detail-meta i{
     margin-right:3px;
   }
   @media (max-width: 768px) {
@@ -171,36 +230,44 @@
     }
 
   }
-  .article-content h1,.article-content h2,.article-content >h3,.article-content >h4,.article-content >h5,.article-content >h6{
-    /*position: relative;*/
-    /*margin-left:10px;*/
+  .article_container .article-content h1,.article_container .article-content h2,.article_container .article-content h3,.article_container .article-content h4,.article_container .article-content h5{
     color: #4bb5e4 ;
   }
 
-  .article-content blockquote{
+  .article_container .article-content blockquote{
     border-left: 2px solid #009A61;
     background: #F6F6F6;
     color: #555;
     font-size: 1em;
   }
-  .article-content a,.article-detail-meta a{
+  .article_container .article-content a,.article_container .article-detail-meta a{
     color: #009a61;
     text-decoration: none;
   }
-  .article-content img{
+  .article_container .article-content img{
     max-width: 100%;
   }
-  .article-content-footer{
+  .article_container .article-content-footer{
     border-top:1px solid #ccc;
   }
-  .article-content-footer img{
+  .article_container .article-content-footer img{
     max-width: 100%;
   }
 
-  .aplayer{
+  .article_container .article-content ol{
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+  }
+
+
+
+  /*.codeindex span{*/
+    /*color: #ffffff;*/
+  /*}*/
+  .article_container .aplayer{
     margin-bottom: 1.5rem !important;
   }
-  .aplayer-list,.aplayer-icon-menu{
+  .article_container .aplayer-list,.aplayer-icon-menu{
     display: none !important;
   }
 </style>

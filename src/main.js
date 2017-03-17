@@ -23,14 +23,11 @@ import './assets/css/slide3D-1.2.1.min.css'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
-import 'animate.css'    //引入 Animate.css 动画库
-
-import './assets/js/Utils.js'     //功能
+// import 'animate.css'    //引入 Animate.css 动画库
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
 Vue.use(ElementUI)
-
 const router = new VueRouter({
 	mode: 'history',
   	routes

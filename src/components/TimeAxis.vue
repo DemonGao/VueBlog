@@ -16,7 +16,7 @@
 		</div>
 	</div>
 </template>
-<style type="text/css" scoped>
+<style type="text/css" scoped="scoped">
   .timeaxis{
     position: absolute;
     height: 100%;

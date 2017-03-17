@@ -127,7 +127,7 @@
     }
   }
 </script>
-<style type="text/css" scope="scope">
+<style type="text/css" scoped="scoped">
 
   .mask {
     position: absolute;

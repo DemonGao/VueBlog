@@ -1,11 +1,11 @@
 // import Home from './../components/Home'
 // import Sign from './../components/Sign'
-// import Article from './../components/Article'
+import Article from './../components/Article'
 // import TimeAxis from './../components/TimeAxis'
 const User = resolve => require(['./../components/User.vue'], resolve)
 const Home = resolve => require(['./../components/Home.vue'], resolve)
 const Sign = resolve => require(['./../components/Sign.vue'], resolve)
-const Article = resolve => require(['./../components/Article.vue'], resolve)
+// const Article = resolve => require(['./../components/Article.vue'], resolve)
 const TimeAxis = resolve => require(['./../components/TimeAxis.vue'], resolve)
 const Case = resolve => require(['./../components/Case.vue'], resolve)
 // import Admin from './../components/Admin/Admin'

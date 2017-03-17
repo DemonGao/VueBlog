@@ -57,21 +57,25 @@ blockquote {
 ul, menu, dir {
   display: block;
   list-style-type: disc;
-  -webkit-margin-before: 1em;
-  -webkit-margin-after: 1em;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
+  /*-webkit-margin-before: 1em;*/
+  /*-webkit-margin-after: 1em;*/
+  /*-webkit-margin-start: 0px;*/
+  /*-webkit-margin-end: 0px;*/
   -webkit-padding-start: 40px;
+  -moz-padding-start: 40px;
 }
 ol {
   display: block;
-  list-style-type: decimal;
+  list-style-type: decimal-leading-zero;
   -webkit-margin-before: 1em;
   -webkit-margin-after: 1em;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
   -webkit-padding-start: 40px;
+
+
 }
+
 p {
   /*margin: 0 0 10px;*/
 }
@@ -94,34 +98,6 @@ hr {
   line-height: 1.1;
   color: inherit;
 }
-/*.md-hiden,.sm-hiden{*/
-  /*display: none;*/
-/*}*/
-/*.sm-show{*/
-  /*display: block;*/
-/*}*/
-
-/*@media (min-width: 768px){*/
-  /*html,body{*/
-    /*!*overflow-y: scroll;*!*/
-    /*!*margin-right:-17px !important;*!*/
-  /*}*/
-  /*#wrapper{*/
-    /*!*padding-top: 80px;*!*/
-  /*}*/
-  /*.sm-hiden{*/
-    /*display: block*/
-  /*}*/
-  /*.sm-show{*/
-    /*display:none;*/
-  /*}*/
-
-/*}*/
-/*@media (min-width: 992px){*/
-  /*.md-hiden{*/
-    /*display: block;*/
-  /*}*/
-/*}*/
 
 /*清除浮动*/
 .clearfix:before, .clearfix:after {
@@ -186,3 +162,27 @@ hr {
 .loading i:nth-child(5){
   -webkit-animation:loading 1s ease-in 0.5s infinite;
 }
+
+
+.demon_code{
+
+}
+
+.demon_code_index{
+  font-size: 14px;
+  margin-right: 1em;
+  color: #70acb1;
+  position: relative;
+  display: inline-block;
+  width: 25px;;
+}
+/*.demon_code_index:before{*/
+  /*content: ' ';*/
+  /*position: absolute;*/
+  /*top:0;*/
+  /*left: 25px;;*/
+  /*height:135%;*/
+  /*width:4px;*/
+  /*background-color: #ffffff;*/
+
+/*}*/

@@ -2,17 +2,33 @@
 
 > A Vue.js project
 
-## Build Setup
+## 安装
 
 ``` bash
-# install dependencies
+git clone https://github.com/DemonGao/VueBlog.git
+
+cd VueBlog
+
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 启动项目
 npm run dev
 
-# build for production with minification
+# 项目打包
 npm run build
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+修改 build 文件 webpack.prod.conf.js
+```
+output: {
+    path: config.build.assetsRoot,
+-   filename: utils.assetsPath('js/[name].[chunkhash].js'),   
+-   chunkFilename: utils.assetsPath('js/[id].[chunkhash].js') 
++    filename: utils.assetsPath('[name].[chunkhash].js'),   //entry 里面生成出来的文件名
++    chunkFilename: utils.assetsPath('[id].[chunkhash].js') //未被列在entry中，却又需要被打包出来的文件命名配置
+  },
+```
+build 文件都放在了 static 目录下 ,方便 上传 到 cdn
+

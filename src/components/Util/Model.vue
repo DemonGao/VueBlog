@@ -114,7 +114,7 @@
 		}
 	}
 </script>
-<style type="text/css" scoped>
+<style type="text/css" scoped="scoped">
 	.modal-enter-active {
 	  transition: all .3s ease;
 

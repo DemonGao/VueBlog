@@ -6,36 +6,55 @@
                    :class="{'router-link-active':$route.path.indexOf('home')!=-1||$route.path.indexOf('article')!=-1}">
         首页
       </router-link>
-      <router-link to="/sign">专题</router-link>
+      <router-link to="/sign" >专题</router-link>
       <!--<router-link to="/case">H5作品</router-link>-->
     </nav>
 
     <!--移动端 menu-->
     <div class="mobil-menu">
-
     </div>
-    <div class="search">
+    <div class="search" @click="searchOpt.isshow=!searchOpt.isshow">
       <div class="placeholder">翻页太辛苦，试试直接搜索</div>
       <i class="iconfont icon-sousuo_sousuo icon-search searchBtn "></i>
     </div>
+    <demonSearch :searchOpt="searchOpt">
+      <div slot="header">
+      </div>
+    </demonSearch>
+
+    <div class="bg"></div>
   </header>
 </template>
 
 <script>
+  import DemonSearch from './../Util/DemonSearch'
   export default{
+    components:{
+      'demonSearch': DemonSearch
+    },
     data(){
       return{
-
+        searchOpt:{
+          isshow:false,
+          closeBtn:true,
+          data:[{
+            id:1,
+            article:'123123123'
+          }]
+        }
       }
     },
     mounted(){
-      
-    },
 
+    },
+    methods:{
+
+    }
   }
 </script>
 
-<style scoped="scoped">
+<style type="text/css" scoped="scoped">
+
   /*--------------------------------------头部导航--------------------------------------*/
   .header {
     box-sizing: border-box;

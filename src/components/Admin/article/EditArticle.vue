@@ -180,7 +180,7 @@
     },
 	}
 </script>
-<style type="text/css" scopep="scoped">
+<style type="text/css" scoped="scoped">
 
 .editor{
   /*background-color: #F7FED8;*/
@@ -316,7 +316,7 @@ code {
   color: #f66;
 }
 
- #view h1,#view h2,#view >h3,#view >h4,#view >h5,#view >h6{
+ #view h1,#view h2,#view h3,#view h4,#view h5,#view h6{
    /*position: relative;*/
    /*margin-left:10px;*/
    color: #4bb5e4 ;

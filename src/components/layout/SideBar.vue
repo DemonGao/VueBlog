@@ -101,7 +101,7 @@
   }
 </script>
 
-<style scoped="scoped">
+<style type="text/css" scoped="scoped">
 
   /*-----------------------------------DemonGao + logo + 背景色-----------------------------------*/
   .panel .panel-heading{
