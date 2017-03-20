@@ -121,7 +121,7 @@
         var el = document.createElement('div');//该div不需要设置class="ds-thread"
         el.setAttribute('data-thread-key', this.$route.path.split('/')[2]);//必选参数
         el.setAttribute('data-url', 'http://demongao.com'+this.$route.path);//必选参数
-        DUOSHUO.EmbedThread(el);
+        DUOSHUO.EmbedThread(el);    //延迟加载多说评论框 vue 可用
         document.getElementById("duoshuo").appendChild(el);
       },
       ajax(){
@@ -136,6 +136,7 @@
             this.data = data.data;
             localStorage.setItem("demongao_bdText",this.data.title)
             this.loading = false;
+//            分享注释
 //            this.share = `
 //            <div class="ds-share flat"
 //              data-thread-key="${this.$route.path.split('/')[2]}"
@@ -162,6 +163,7 @@
             if(preArr ==null){
               return ;
             }
+
 ////            遍历正则匹配到的<pre></pre>标签组
 //            for(let i=0; i<preArr.length;i++){
 //              var newpresub = preArr[i].slice(11,-13).replace(/([\s\S]*?\n)/g,'<li>$1</li>')
@@ -174,16 +176,18 @@
             for(let i=0; i<preArr.length;i++){
               var index = 0;
               var newpresub = preArr[i].slice(11,-13).replace(/([\s\S]*?\n)/g,function(){
-//                console.log(arguments);
-
-                console.log(index)
+//                将< pre><code></code></pre>剪切
+//                console.log(index)
                 index++;
                 var strindex = index>9 ? index : '0'+index
-                return `<em class="demon_code_index">${strindex}</em>${arguments[1]}` ;
+                return `<div class="demon_code_line"><em class="demon_code_index">${strindex}</em> <div class="demon_code_content">${arguments[1]}</div></div>` ;
               })
               console.log('----------------------------');
-              preArr[i] = `<pre><code class="demon_code">${newpresub}</code></pre>`;
-              str = str.replace(/<(pre)><(code)>[\s\S]*?<\/code><\/pre>/g,preArr[i])
+//              preArr[i] = `<pre><code class="demon_code">${newpresub}</code></pre>`;
+//              str = str.replace(/<(pre)><(code)>[\s\S]*?<\/code><\/pre>/g,preArr[i])
+              //将源字符串进行 replace 替换成需要的
+              str = str.replace(preArr[i],`<pre class="demon_pre"><code class="demon_code">${newpresub}</code></pre>`)
+
             }
             this.data.content = str;
           }else{
@@ -230,6 +234,10 @@
     }
 
   }
+
+  .article_container .article-content{
+    line-height: 1.8em;
+  }
   .article_container .article-content h1,.article_container .article-content h2,.article_container .article-content h3,.article_container .article-content h4,.article_container .article-content h5{
     color: #4bb5e4 ;
   }
@@ -244,8 +252,21 @@
     color: #009a61;
     text-decoration: none;
   }
+  .article_container .article-content code{
+    color: #f66;
+  }
+  .article_container .article-content pre code{
+    color: #fff;;
+  }
+
+  .article_container .article-content p{
+
+  }
   .article_container .article-content img{
+    margin:20px 0;
     max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 15px #000;
   }
   .article_container .article-content-footer{
     border-top:1px solid #ccc;
@@ -270,4 +291,10 @@
   .article_container .aplayer-list,.aplayer-icon-menu{
     display: none !important;
   }
+
+  /*@media (max-width: 800px) {*/
+    /*.article_container .article{*/
+      /*padding:10px;*/
+    /*}*/
+  /*}*/
 </style>

@@ -12,6 +12,9 @@ cd VueBlog
 # 安装依赖
 npm install
 
+# 修改配置文件
+src/store/index-default.js
+
 # 启动项目
 npm run dev
 
@@ -30,5 +33,7 @@ output: {
 +    chunkFilename: utils.assetsPath('[id].[chunkhash].js') //未被列在entry中，却又需要被打包出来的文件命名配置
   },
 ```
+
+
 build 文件都放在了 static 目录下 ,方便 上传 到 cdn
 

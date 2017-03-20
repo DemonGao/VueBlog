@@ -17,7 +17,7 @@
     </div>
 
     <el-dialog title="上传图片" v-model="dialogFormVisible">
-      <input type="file" name="avatar" id="avatar"/>
+      <input type="file" name="avatar" id="avatar" multiple="multiple"/>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
         <el-button type="primary" @click="uploadpic">确 定</el-button>
@@ -31,7 +31,14 @@
   marked.setOptions({
     highlight: function (code) {
       return highlight.highlightAuto(code).value;
-    }
+    },
+    gfm: true,
+    tables: true,
+    breaks: true,
+    pedantic: false,
+    sanitize: true,
+    smartLists: true,
+    smartypants: false,
   });
   export default{
     data(){
@@ -78,9 +85,12 @@
 //          filenode.value = null;
         var filenode = document.getElementById("avatar");
         let form = new FormData(document.getElementById("avatar")[0])
-//        构造form数据
-          var data= new FormData();
-          data.append("avatar", filenode.files[0]);
+//      构造form数据
+        var data= new FormData();
+
+        for(let i=0;i<filenode.files.length;i++){
+          data.append("avatar", filenode.files[i]);
+        }
 
 //          console.log(filenode.files[0])
         this.axios.post(this.$store.state.serverurl+'profile',data)
@@ -90,6 +100,15 @@
             this.dialogFormVisible = false;
           })
           .catch(e=>{console.log(e)})
+
+
+//        this.axios.post(this.$store.state.serverurl+'photos',data)
+//          .then((response)=>{
+//            console.log(response.data)
+//            this.input += `![图片描述](${response.data.result.path})`
+//            this.dialogFormVisible = false;
+//          })
+//          .catch(e=>{console.log(e)})
       },
       update(e) {
         this.input = e.target.value

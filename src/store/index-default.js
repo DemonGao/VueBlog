@@ -1,6 +1,9 @@
+/**
+ * Created by demongao on 2017/3/20.
+ */
 /*
-	初始化我们的Store
-*/
+ 初始化我们的Store
+ */
 import Vue from 'vue'
 import Vuex from 'vuex'
 import mutations from './mutations'
@@ -9,9 +12,7 @@ import actions from './actions'
 Vue.use(Vuex);
 
 const state = {
-	serverurl:'http://123.207.169.191:3000/',
-	// serverurl:'http://127.0.0.1:3000/',
-
+  serverurl:'http://ip:port/',
   map:{},
   article:{
     title:'',

@@ -104,9 +104,9 @@ export default{
   .backtop{
     position: fixed;
     bottom: 3rem;
-    right: 1.7rem;
-    width: 4rem;
-    height: 8.1rem;;
+    right: 20px;
+    width: 48px;
+    height: 100px;;
     /*background-color: green;*/
     text-align: center;
     z-index:99;
@@ -128,9 +128,9 @@ export default{
     opacity: 0;
   }
   .backtop-sub{
-    width: 4rem;
-    height:4rem;
-    line-height:4rem;
+    width: 48px;
+    height:48px;
+    /*line-height:4rem;*/
     background-color: #70ACB1;
     /*background-color: #C6F1E7;*/
     position: relative;
@@ -143,7 +143,7 @@ export default{
   }
   .backtop-sub.gotop{
     position:absolute;
-    top:4.1rem;
+    top: 49px;
     left:0;
     z-index:999999999;
   }
@@ -158,8 +158,8 @@ export default{
     opacity: 0;
     display: block;
     width:2em;
-    line-height: 2rem;
-    height:4rem;
+    line-height: 24px;
+    height:48px;
 
     color:#ffffff;
   }
@@ -168,10 +168,10 @@ export default{
   }
   .backtop-sub i.iconfont{
     display: inline-block;
-    width:4rem;
-    height:4rem;
+    width: 48px;
+    height:48px;
     color:#dfdfdf;
-    font-size:3rem;
+    font-size: 30px;
     /*line-height: 4rem;;*/
 
   }
@@ -187,14 +187,14 @@ export default{
   /*公共账号 样式*/
   .backtop-sub.wx .ggzh{
     position: absolute;
-    top:-16rem;
-    left: -16rem;
-    width: 16rem;
-    height: 20rem;
+    top:-202px;
+    left: -200px;
+    width: 200px;
+    height: 250px;
 
     background: #fff url(./../../assets/img/wx.jpg) no-repeat 50% 0;
-    background-size: 16.5rem;
-    padding-top: 16.5rem;;
+    background-size: 200px;
+    padding-top: 200px;;
     opacity: 0;
     box-shadow: -2px 0 3px 3px rgba(0, 0, 0, .1);
     -webkit-transform: scale(0);
@@ -204,6 +204,10 @@ export default{
     -webkit-transition: all ease 0.3s;
     transition: all ease 0.3s;
   }
+  .backtop-sub.wx .ggz em{
+    line-height: 0;
+  }
+
   .backtop-sub.wx:hover .ggzh{
     opacity: 1;
     -webkit-transform: scale(1);
