@@ -13,7 +13,7 @@ cd VueBlog
 npm install
 
 # 修改配置文件
-src/store/index-default.js
+src/store/index-default.js 内容  并重命名为index.js
 
 # 启动项目
 npm run dev
@@ -22,7 +22,7 @@ npm run dev
 npm run build
 ```
 
-
+  
 修改 build 文件 webpack.prod.conf.js
 ```
 output: {

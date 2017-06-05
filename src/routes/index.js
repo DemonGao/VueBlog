@@ -1,19 +1,24 @@
 // import Home from './../components/Home'
 // import Sign from './../components/Sign'
-import Article from './../components/Article'
-// import TimeAxis from './../components/TimeAxis'
-const User = resolve => require(['./../components/User.vue'], resolve)
-const Home = resolve => require(['./../components/Home.vue'], resolve)
-const Sign = resolve => require(['./../components/Sign.vue'], resolve)
-// const Article = resolve => require(['./../components/Article.vue'], resolve)
-const TimeAxis = resolve => require(['./../components/TimeAxis.vue'], resolve)
-const Case = resolve => require(['./../components/Case.vue'], resolve)
 // import Admin from './../components/Admin/Admin'
 // import Admin_Article from './../components/Admin/article/Article'
 // import Admin_ArticleList from './../components/Admin/article/ArticleList'
 // import Admin_AddArticle from './../components/Admin/article/AddArticle'
 // import Admin_EditArticle from './../components/Admin/article/EditArticle'
 // import Admin_Sign from './../components/Admin/Sign';
+// import Article from './../components/Article'
+// import TimeAxis from './../components/TimeAxis'
+
+const User = resolve => require(['./../components/User.vue'], resolve)
+const Home = resolve => require(['./../components/Home.vue'], resolve)
+const Sign = resolve => require(['./../components/Sign.vue'], resolve)
+const Article = resolve => require(['./../components/Article.vue'], resolve)
+const TimeAxis = resolve => require(['./../components/TimeAxis.vue'], resolve)
+const Case = resolve => require(['./../components/Case.vue'], resolve)
+const Album = resolve => require(['./../components/Album.vue'], resolve)
+const AlbumList = resolve => require(['./../components/Album/AlbumList.vue'], resolve)
+// const AlbumPhotos = resolve => require(['./../components/Util/photo/photo.vue'], resolve)
+const AlbumPhotos = resolve => require(['./../components/Album/AlbumPhotos.vue'], resolve)
 
 const Index = resolve => require(['./../components/Admin/Index.vue'], resolve)  //admin 主路由{登录,管理}
 const Admin = resolve => require(['./../components/Admin/Admin.vue'], resolve)  //管理
@@ -57,6 +62,27 @@ const routes = [
         path: 'case',
         component: Case
       },
+      {
+        //相册
+        path: 'album',
+        component:Album,
+        children:[
+          {
+            path:'home',
+            component:AlbumList
+          },
+          {
+            path:'timeaxis',
+            component:Case
+          },
+          {
+            path:'photos',
+            component:AlbumPhotos
+          }
+        ]
+
+
+      }
     ]
   },
 

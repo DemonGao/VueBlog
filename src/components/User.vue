@@ -308,12 +308,12 @@
   article .content {
     position: absolute;
     top: 0;
-    margin-top: 60px;
+    margin-top: 50px;
     width: 100%;
 
-    min-height: -moz-calc(100% - 60px);
-    min-height: -webkit-calc(100% - 60px);
-    min-height: calc(100% - 60px);
+    min-height: -moz-calc(100% - 50px);
+    min-height: -webkit-calc(100% - 50px);
+    min-height: calc(100% - 50px);
     /*background-color: #ffffff;*/
     /*top: 60px;;*/
   }

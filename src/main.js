@@ -22,7 +22,12 @@ import './assets/css/slide3D-1.2.1.min.css'
 
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-
+//图片渐进式加载
+import './assets/css/progressive-image.css'
+import progressive from 'progressive-image/dist/vue'
+Vue.use(progressive, {
+  removePreview: true
+})
 // import 'animate.css'    //引入 Animate.css 动画库
 
 Vue.use(VueRouter)

@@ -35,7 +35,9 @@
 
   .sign{
     position: absolute;
-    height:100%;
+
+    margin-top: 10px;;
+    height:calc(100% - 10px);
   }
 	.sign .panel-heading{
 		padding:10px 30px;

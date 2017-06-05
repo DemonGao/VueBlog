@@ -92,23 +92,12 @@
           data.append("avatar", filenode.files[i]);
         }
 
-//          console.log(filenode.files[0])
         this.axios.post(this.$store.state.serverurl+'profile',data)
           .then((response)=>{
-//            console.log(response.data)
             this.input += `![图片描述](${response.data.result.path})`
             this.dialogFormVisible = false;
           })
           .catch(e=>{console.log(e)})
-
-
-//        this.axios.post(this.$store.state.serverurl+'photos',data)
-//          .then((response)=>{
-//            console.log(response.data)
-//            this.input += `![图片描述](${response.data.result.path})`
-//            this.dialogFormVisible = false;
-//          })
-//          .catch(e=>{console.log(e)})
       },
       update(e) {
         this.input = e.target.value

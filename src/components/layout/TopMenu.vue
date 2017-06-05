@@ -7,6 +7,7 @@
         首页
       </router-link>
       <router-link to="/sign" >专题</router-link>
+      <!--<router-link to="/album" >足迹</router-link>-->
       <!--<router-link to="/case">H5作品</router-link>-->
     </nav>
 
@@ -108,7 +109,7 @@
   .header .menu a:after {
     content: '';
     position: absolute;
-    bottom: 2px;
+    bottom: 0px;
     left: 0;
     width: 100%;
     height: 2px;

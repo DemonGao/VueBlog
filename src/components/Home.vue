@@ -10,6 +10,7 @@
     <div class="panel-body" v-show="!loading">
       <ul class="home-list">
         <li v-for="item in orderedArticles" class="home-item">
+          <!--{{item}}-->
           <h1>{{item.title}}<span>{{new Date(item.date).Format("YYYY-MM-DD")}}</span></h1>
           <div class="home-item-content" v-html="item.content"></div>
           <div class="home-item-footer">
@@ -52,7 +53,7 @@
     },
     computed: {
       orderedArticles(){
-        return _.orderBy(this.articles, 'date', 'desc')
+        return _.orderBy(this.articles, 'edit_date', 'desc')
       }
     },
     mounted(){
@@ -128,7 +129,9 @@
   }
 </script>
 <style type="text/css" scoped="scoped">
-
+.home{
+  margin-top: 10px;;
+}
   .mask {
     position: absolute;
     top: 0;

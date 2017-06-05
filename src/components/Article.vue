@@ -92,28 +92,9 @@
       }
     },
     mounted(){
-      this.toggleDuoshuoComments();
+//      this.toggleDuoshuoComments();
       let aplayer = this.$refs.player.control;
       this.ajax();
-
-//      var arr = document.getElementsByTagName("pre");
-//      console.log(arr[0].innerHTML)
-//      for(let i=0;i<arr.length;i++){
-//        console.log(arr[i].innerHTML)
-//      }
-//      _.forEach(arr,function(val){
-//        console.log(val);
-////        .innerHTML.split("\n")
-//      })
-//      console.log(arr);
-//      var text = "<ol>";
-//      $.each(arr,function(i,item){
-//        if(item.trim()!=""){
-//          text += "<li>"+ item +"</li>";
-//        }
-//        text += "</ol>"
-//        $("pre").html(text);
-//      });
     },
     methods:{
       //多说加载评论框
@@ -202,6 +183,7 @@
 </script>
 <style type="text/css">
   .article_container{
+    margin-top: 10px;;
     height:100%;
   }
   .article_container .loading{
