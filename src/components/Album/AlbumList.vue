@@ -1,6 +1,6 @@
 <template>
 <ul class="albumlist">
-  <router-link to="/album/photos" class="albumitem"  v-for="item in albums" tag="li">
+  <router-link :to="{name:'album/photos',params:{tag:'all'}}" class="albumitem"  v-for="item in albums" tag="li">
     <figure>
       <img src="../../assets/img/bg.jpg">
     </figure>
@@ -13,8 +13,32 @@
   export default{
     data(){
       return{
-//        albums:[1,2,3,4,5,6,7,8,9,0,10,11,12,13,14,15,16,17,18]
-        albums:[1,2,3,4,5]
+        albums:[1,2,3,4,5,6,7,8,9,0,10,11,12,13,14,15,16,17,18]
+//        albums:[1,2,3,4,5]
+      }
+    },
+    mounted(){
+
+    },
+    methods:{
+      ajax(){
+        this.loading = true;
+        this.axios.get(this.$store.state.serverurl + 'api/getAlbumList', {
+          params: {
+            tag: this.$route.params.tag,
+            page: this.currentPage,
+            pageSize: this.pageSize
+          }
+        }).then((response) => {
+          var data = response.data;
+          if (data.status) {
+            this.albums = data.data.results;
+            this.total = data.data.total;
+            this.loading = false;
+          } else {
+            alert(data.msg);
+          }
+        })
       }
     }
 

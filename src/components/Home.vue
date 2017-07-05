@@ -8,8 +8,22 @@
       <i></i>
     </div>
     <div class="panel-body" v-show="!loading">
+      <div class="sortbar">
+        <div :class="['sortbtn',sortType === 'date' ? 'active' :'']" @click="sortAjax('date','desc')">
+          <i class="iconfont icon-fabushijian" style="color: #47adf8;"></i>
+          发布
+        </div>
+        <div :class="['sortbtn',sortType === 'edit_date' ? 'active' :'']" @click="sortAjax('edit_date','desc')">
+          <i class="iconfont icon-updata" style="color: #419866;"></i>
+          更新
+        </div>
+        <div :class="['sortbtn',sortType === 'view' ? 'active' :'']" @click="sortAjax('view','desc')">
+          <i class="iconfont icon-icon" style="color: red;"></i>
+          热度
+        </div>
+      </div>
       <ul class="home-list">
-        <li v-for="item in orderedArticles" class="home-item">
+        <li v-for="item in articles" class="home-item">
           <!--{{item}}-->
           <h1>{{item.title}}<span>{{new Date(item.date).Format("YYYY-MM-DD")}}</span></h1>
           <div class="home-item-content" v-html="item.content"></div>
@@ -23,7 +37,6 @@
           <section class="mask"></section>
         </li>
       </ul>
-
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -48,14 +61,12 @@
         pageSize: 8,
         currentPage: 1,
         total: 0,
-        loading: true
+        loading: true,
+        sortObj: undefined,
+        sortType: 'date'
       }
     },
-    computed: {
-      orderedArticles(){
-        return _.orderBy(this.articles, 'edit_date', 'desc')
-      }
-    },
+    computed: {},
     mounted(){
 //      window.addEventListener('scroll',this.handleScroll)
       var ua = navigator.userAgent;
@@ -70,6 +81,13 @@
       this.ajax();
     },
     methods: {
+      sortAjax(key, value){
+        let obj = {};
+        obj[key] = value;
+        this.sortType = key;
+        this.sortObj = JSON.stringify(obj);
+        this.ajax();
+      },
       handleSizeChange(val) {
 //        console.log(`每页 ${val} 条`);
         this.pageSize = val;
@@ -86,28 +104,23 @@
         if (!this.$route.params.tag) {
           this.$route.params.tag = 'all';
         }
-
         this.axios.get(this.$store.state.serverurl + 'api/getArticles', {
           params: {
             tag: this.$route.params.tag,
             page: this.currentPage,
-            pageSize: this.pageSize
+            pageSize: this.pageSize,
+            sortObj: this.sortObj
           }
         }).then((response) => {
           var data = response.data;
           if (data.status) {
             this.articles = data.data.results;
             this.total = data.data.total;
-
-//            setTimeout(()=>{
-//              this.loading = false;
-//            },600)
             this.loading = false;
-          // console.log(this.articles);
           } else {
             alert(data.msg);
           }
-      })
+        })
       },
       goTop(){
         var timer = setInterval(function () {
@@ -128,10 +141,11 @@
     }
   }
 </script>
-<style type="text/css" scoped="scoped">
-.home{
-  margin-top: 10px;;
-}
+<style type="text/css">
+  .home {
+
+  }
+
   .mask {
     position: absolute;
     top: 0;
@@ -156,8 +170,41 @@
     padding: 0;
   }
 
-  .home .panel-body .home-list {
+  .home .panel-body .sortbar {
+    display: box; /* OLD - Android 4.4- */
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    /* 09版 */
+    -webkit-box-orient: horizontal;
+    /* 12版 */
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    -o-flex-direction: row;
+    flex-direction: row;
 
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+  }
+
+  .home .panel-body .sortbar .sortbtn {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 5px 10px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .home .panel-body .sortbar .sortbtn:hover,.home .panel-body .sortbar .sortbtn.active {
+    background-color: rgba(255,255,255,.7);
+  }
+
+  .home .panel-body .home-list {
     list-style: none;
     padding-left: 0;
     margin-top: 0;
@@ -231,7 +278,6 @@
 
   .home-list .home-item .home-item-content {
     position: relative;
-    /*padding: 10px 0 30px;*/
     border-bottom: 1px dotted #ccc;
     color: #7f7f7f;
     line-height: 35px;
@@ -253,7 +299,17 @@
   }
 
   .home-list .home-item .home-item-content img {
-    max-width: 100%;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px #000;
   }
 
   .home-item-footer {
@@ -351,6 +407,10 @@
 
     .home-list .home-item h1 span {
       display: none;
+    }
+    .home .panel-body .sortbar {
+      justify-content: flex-start;
+      -webkit-justify-content: flex-start;
     }
   }
 

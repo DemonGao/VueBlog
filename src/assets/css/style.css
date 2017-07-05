@@ -174,14 +174,18 @@ hr {
 }
 .demon_code{
   position: relative;
+  /*counter-reset: counter;*/
 }
 .demon_code_line{
   position: relative;
   height:20px;
   line-height: 20px;
   background: #000;
-
 }
+/*.demon_code_line:before{*/
+  /*counter-increment: counter;*/
+  /*content: counter(counter)'.';*/
+/*}*/
 .demon_code_index{
   display: inline-block;
   font-size: 14px;

@@ -2,8 +2,10 @@
 <div class="album">
   <!--pc 端 menu-->
   <nav class="album-menu">
-    <router-link to="/album/home" >首页</router-link>
-    <router-link to="/album/timeaxis" >时间轴</router-link>
+    <router-link to="/album" :class="{'router-link-active':$route.path =='/album'}">相册</router-link>
+
+    <a href="javascript:;" v-if="$route.path.includes('/album/photos/')">{{$route.path.split('/')[$route.path.split('/').length - 1]}}</a>
+    <!--<router-link to="/album/timeaxis" >时间轴</router-link>-->
     <!--<router-link to="/album/photos" >图集</router-link>-->
     <!--<router-link to="/case">H5作品</router-link>-->
   </nav>

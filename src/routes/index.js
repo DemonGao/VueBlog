@@ -68,6 +68,10 @@ const routes = [
         component:Album,
         children:[
           {
+            path:'/',
+            component:AlbumList,
+          },
+          {
             path:'home',
             component:AlbumList
           },
@@ -76,7 +80,8 @@ const routes = [
             component:Case
           },
           {
-            path:'photos',
+            path:'photos/:tag',
+            name:'album/photos',
             component:AlbumPhotos
           }
         ]

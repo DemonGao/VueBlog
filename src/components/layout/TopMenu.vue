@@ -3,7 +3,7 @@
     <!--pc 端 menu-->
     <nav class="menu">
       <router-link :to="{name:'home',params:{tag:'all'}}"
-                   :class="{'router-link-active':$route.path.indexOf('home')!=-1||$route.path.indexOf('article')!=-1}">
+                   :class="{'router-link-active':($route.path.indexOf('home')!=-1||$route.path.indexOf('article')!=-1)&&$route.path.indexOf('/home')==-1}">
         首页
       </router-link>
       <router-link to="/sign" >专题</router-link>
@@ -141,6 +141,7 @@
     left: 10px;
     line-height: 30px;
     color: #999;
+
   }
 
   .search .icon-search {
@@ -159,7 +160,7 @@
   }
 
   @media (max-width: 800px) {
-    /*max-width:800   小于800px 时*/
+    /*max-width:1000   小于1000px 时*/
     .header {
       margin-left: 0;
     }
@@ -181,9 +182,17 @@
       top:0;
       right:0;
       margin-right: 20px;
+      width:100px;
     }
     .header .search .placeholder{
       font-size: 12px;
+      /*省略*/
+      width: 71px;
+      height: 100%;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+
     }
 
 

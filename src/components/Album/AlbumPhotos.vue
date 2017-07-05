@@ -455,24 +455,16 @@
     <div class="albumphotoitem" v-for="item in imgs">
       <div class="space"></div>
       <div class="progressive">
-        <img class="preview" v-progressive="item.src" :data-srcset="item.srcset" :src="previewImg(item.src)"/>
+        <!--<img class="preview" v-progressive="item.src" :data-srcset="item.srcset" :src="previewImg(item.src)"/>-->
+        <img class="preview" v-progressive="item.src" :data-srcset="item.srcset" :src="item.src"/>
       </div>
     </div>
-    <!--<figure class="albumphotoitem">-->
-    <!--<img src="../../assets/img/bg.jpg">-->
-    <!--</figure>-->
-    <!--<figure class="albumphotoitem">-->
-    <!--<img src="../../assets/img/bg.jpg">-->
-    <!--</figure>-->
-    <!--<figure class="albumphotoitem">-->
-    <!--<img src="../../assets/img/bg.jpg">-->
-    <!--</figure>-->
-
   </div>
 </template>
 
 <script>
 
+  let path = './../../../static/img/sidebar/t_nw0'
   export default{
     components: {
 
@@ -485,43 +477,52 @@
         containerDom:'',
         imgs: [
           {
-            src: 'http://ecompany.demongao.com/1.jpg',
+            src: path+'1.jpg',
           },
           {
-            src: 'http://ecompany.demongao.com/2.jpg',
-
+            src: path+'2.jpg',
           },
           {
-            src: 'http://ecompany.demongao.com/3.jpg',
-
+            src: path+'3.jpg',
           },
           {
-            src: 'http://ecompany.demongao.com/4.jpg',
-
+            src: path+'4.jpg',
           },
           {
-            src: 'http://ecompany.demongao.com/5.jpg',
-
+            src: path+'5.jpg',
           },
           {
-            src: 'http://ecompany.demongao.com/6.jpg',
-
+            src: path+'6.jpg',
           },
           {
-            src: 'http://ecompany.demongao.com/7.jpg',
-
+            src: path+'7.jpg',
           },
           {
-            src: 'http://ecompany.demongao.com/8.jpg',
-
+            src: path+'8.jpg',
           },
           {
-            src: 'http://ecompany.demongao.com/9.jpg',
-
+            src: path+'1.jpg',
           },
           {
-            src: 'http://ecompany.demongao.com/10.jpg',
-
+            src: path+'2.jpg',
+          },
+          {
+            src: path+'3.jpg',
+          },
+          {
+            src: path+'4.jpg',
+          },
+          {
+            src: path+'5.jpg',
+          },
+          {
+            src: path+'6.jpg',
+          },
+          {
+            src: path+'7.jpg',
+          },
+          {
+            src: path+'8.jpg',
           }
         ]
       }
@@ -541,24 +542,6 @@
 </script>
 
 <style scoped="scoped">
-  .m-gallery>div{
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .m-gallery .item{
-    height: 100px;
-    flex-grow:1;
-    margin: 2px;
-  }
-  .m-gallery  img{
-    height: 100px;
-    min-width: 100%;
-    max-width: 100%;
-    /*       background-color: red;
-     */      object-fit: cover;
-    vertical-align: bottom;
-  }
-
   .albumphoto{
     display: flex;
     flex-wrap: wrap;
@@ -566,6 +549,7 @@
 
   .albumphoto .albumphotoitem{
     height: 200px;
+    width: 200px;
     flex-grow:1;
     margin: 3px;
   }
